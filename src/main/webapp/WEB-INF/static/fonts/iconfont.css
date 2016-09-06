@@ -1,0 +1,49 @@
+
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1469600658'); /* IE9*/
+  src: url('iconfont.eot?t=1469600658#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1469600658') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1469600658') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1469600658#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-weixin:before { content: "\e611"; }
+.icon-weibo:before { content: "\e612"; }
+.icon-home:before { content: "\e614"; }
+.icon-icon09:before { content: "\e616"; }
+.icon-dingwei:before { content: "\e619"; }
+.icon-666:before { content: "\e617"; }
+.icon-pingjiaxingxing:before { content: "\e60e"; }
+.icon-pingfenxingban:before { content: "\e60f"; }
+.icon-kefu-copy:before { content: "\e618"; }
+.icon-pingjiaxingxing1:before { content: "\e610"; }
+.icon-iconfontliuyanban:before { content: "\e600"; }
+.icon-iconfontdianhua:before { content: "\e601"; }
+.icon-iconfontshouji:before { content: "\e602"; }
+.icon-iconfonttuanduicheng:before { content: "\e603"; }
+.icon-iconfontweibiaoti5:before { content: "\e604"; }
+.icon-iconfontgotop:before { content: "\e605"; }
+.icon-iconfontweixin:before { content: "\e606"; }
+.icon-iconfontkefu:before { content: "\e607"; }
+.icon-iconfonticonfontjiantou2:before { content: "\e608"; }
+.icon-iconfonticonfontjiantoucopy:before { content: "\e609"; }
+.icon-iconfont202:before { content: "\e60a"; }
+.icon-iconfonttaoxin:before { content: "\e60b"; }
+.icon-iconfontqian:before { content: "\e60c"; }
+.icon-iconfontrenzhengcopy:before { content: "\e60d"; }
+.icon-icon20:before { content: "\e61f"; }
+.icon-icon19:before { content: "\e613"; }
+.icon-icon18:before { content: "\e615"; }
+.icon-icon17:before { content: "\e61a"; }
+.icon-icon15:before { content: "\e61b"; }
+.icon-icon16:before { content: "\e61c"; }
+.icon-icon23:before { content: "\e61d"; }
+.icon-icon21:before { content: "\e61e"; }
