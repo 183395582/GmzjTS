@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html lang="zh">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -332,62 +333,27 @@
 							<div class="img-swiper">
 							<div class="swiper-container swiper-small-con">
 							  <ul class="slides">
+								<c:forEach items="${newslist }" var="news" varStatus="status">
 									<li>
 										<a href="#">
-							        		<img src="static/images/banner/banner-small1.jpg" />
+							        		<img src="${news.imgurl }" />
 							        		<div class="text">
-							        			中国殡葬博览会在南通市举行 ,中国殡葬博览会在南通市举行 
-							        			<span>2016.7.20</span>
+							        			${news.title }
+							        			<span><fmt:formatDate value="${news.time }" type="date"/></span>
 							        		</div>
 							        	</a>
 									</li>
-									<li>
-										<a href="#">
-							        		<img src="static/images/banner/banner-small1.jpg" />
-							        		<div class="text">
-							        			中国殡葬博览会在南通市举行 ,中国殡葬博览会在南通市举行 
-							        			<span>2016.7.21</span>
-							        		</div>
-							        	</a>
-									</li>
-						            <li>
-						            	<a href="#">
-							        		<img src="static/images/banner/banner-small1.jpg" />
-							        		<div class="text">
-							        			中国殡葬博览会在南通市举行 ,中国殡葬博览会在南通市举行 
-							        			<span>2016.7.22</span>
-							        		</div>
-							        	</a>
-						            </li>
-						            <li>
-						            	<a href="#">
-							        		<img src="static/images/banner/banner-small1.jpg" />
-							        		<div class="text">
-							        			中国殡葬博览会在南通市举行 ,中国殡葬博览会在南通市举行 
-							        			<span>2016.7.23</span>
-							        		</div>
-							        	</a>
-						            </li>
-						        </ul>
+								</c:forEach>
+						       </ul>
 							</div>
 						</div>
 							<div class="list-t">
-								<a href="">
-									<h4>中国殡葬博览会在南通市举行 </h4>
-									<p class="ellipsis-f">殡葬行业暴利链条，还原殡葬产品公益属性，才能让深受扰的公众,还原殡葬产品公益属性，才能让深受扰的公众</p>
-								</a>
-								<a href="">
-									<h4>中国殡葬博览会在南通市举行 </h4>
-									<p class="ellipsis-f">殡葬行业暴利链条，还原殡葬产品公益属性，才能让深受扰的公众,还原殡葬产品公益属性，才能让深受扰的公众</p>
-								</a>
-								<a href="">
-									<h4>中国殡葬博览会在南通市举行 </h4>
-									<p class="ellipsis-f">殡葬行业暴利链条，还原殡葬产品公益属性，才能让深受扰的公众,还原殡葬产品公益属性，才能让深受扰的公众</p>
-								</a>
-								<a href="">
-									<h4>中国殡葬博览会在南通市举行 </h4>
-									<p class="ellipsis-f">殡葬行业暴利链条，还原殡葬产品公益属性，才能让深受扰的公众,还原殡葬产品公益属性，才能让深受扰的公众</p>
-								</a>
+								<c:forEach items="${newslist }" var="news" varStatus="status">
+									<a href="">
+										<h4>${news.title } </h4>
+										<p class="ellipsis-f">${news.content }</p>
+									</a>
+								</c:forEach>
 							</div>
 						</div>
 						
@@ -396,12 +362,9 @@
 						<h2 class="clearfix"><span class="l-t">百科</span><a href="#" class="more-link-s fr">更多 ></a></h2>
 						<div class="border-all clearfix mt15">
 							<ul>
-								<li><a href="" class="ellipsis-f txt">中国殡葬博览会在南通市举行</a><span class="time">2016.6.21</span></li>
-								<li><a href="" class="ellipsis-f txt">中国殡葬博览会在南通市举行中国殡葬博览会在南通市举行</a><span class="time">2016.6.21</span></li>
-								<li><a href="" class="ellipsis-f txt">中国殡葬博览会在南通市举行</a><span class="time">2016.6.21</span></li>
-								<li><a href="" class="ellipsis-f txt">中国殡葬博览会在南通市举行中国殡葬博览会在南通市举行</a><span class="time">2016.6.21</span></li>
-								<li><a href="" class="ellipsis-f txt">中国殡葬博览会在南通市举行</a><span class="time">2016.6.21</span></li>
-								<li><a href="" class="ellipsis-f txt">中国殡葬博览会在南通市举行中国殡葬博览会在南通市举行</a><span class="time">2016.6.21</span></li>
+								<c:forEach items="${articlelist }" var="article" varStatus="status">
+									<li><a href="" class="ellipsis-f txt">${article.title }</a><span class="time"><fmt:formatDate value="${article.time }" type="date"/></span></li>
+								</c:forEach>
 							</ul>
 						</div>
 					</div>
