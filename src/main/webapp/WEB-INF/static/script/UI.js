@@ -46,6 +46,8 @@ UI.inputBlur = function (options) {
         opts.Evenend();
     }
 };
+
+
 /*****************************
  //点击显示隐藏
  * popbox:	要展开的容器
@@ -222,105 +224,6 @@ UI.ChoiceAddrSlide = function (options) {
 };
 
 
-//modalType:alert-default  alert-lg
-//btnType: true(两个按钮) false(一个按钮)
-UI.TipAlert = function (modalType,word,btnType,options) {
-    var defaults = {
-        thisObj:'thisObj',
-        btnInfo:['取消','确定'],
-        ensureFn:null
-    };
-    var opts = $.extend({}, defaults, options);
-    switch(modalType){
-        case 'alert-default':{var htmls = '<div class="modalCon"><i class="iconfont icon-tishi"></i></div><div class="modalInfo"> '+word+' </div>';break;};
-        case 'alert-lg':{var htmls = '<div class="modalCon"><i class="iconfont icon-tishi"></i><span class="modalMainInfo">抱歉，您的订单中有部分商品库存不足，请重新下单！</span></div><div class="modalSubtitle">库存不足商品：iPhone 6 PLUS  16G 5.5英寸 金色</div>';break;};
-        default:{break;};
-    }
-    if(btnType){
-        var Foot = '<a id="modalCancel" class="yxBtn grayBtn mr35" href="#">'+opts.btnInfo[0]+'</a><a id="ensure" class="yxBtn orangeBtn" href="#">'+opts.btnInfo[1]+'</a>';
-    }else{
-        var Foot = '<a id="ensure" class="yxBtn orangeBtn" href="#">'+opts.btnInfo[0]+'</a>';
-    }
-
-    var html = '<div class="alertModals ' + modalType + '">'+
-        '<div class="modalWrapBox">' +
-        '<div class="modalClose"><i class="iconfont icon-close"></i></div>'+
-        '<div class="modalContent">'+htmls+'</div>'+
-        '<div class="modalFot">'+Foot+'</div>'+
-        '</div>'+
-        '</div>';
-    var globalMask = '<div class="globalMask" style="width: 100%;height: 100%;position: fixed;top: 0;left: 0;background-color: #000;opacity: 0.24;filter:alpha(opacity=24);z-index: 920;"></div>';
-    if($('.globalMask').length<=0) {
-        $('body').append(globalMask);
-    }
-    $('body').append(html);
-
-    var left = -$('.alertModals').width()/2;
-    var top = -$('.alertModals').height()/2;
-    $('.alertModals').css({
-        marginTop:top,
-        marginLeft:left
-    });
-    //关闭弹出
-    $('.modalClose').bind('click',function(){
-        $(this).closest('.alertModals').remove();
-        $('.globalMask').remove();
-    });
-    if($('#modalCancel').length){
-        $('#modalCancel').bind('click',function(){
-            $(this).closest('.alertModals').remove();
-            $('.globalMask').remove();
-        });
-    }
-    $('#ensure').bind('click',function(){
-        if($.isFunction(opts.ensureFn)){
-            opts.ensureFn(opts.thisObj);
-        }
-        $(this).closest('.alertModals').remove();
-        $('.globalMask').remove();
-    });
-};
-
-//界面中登陆
-UI.loginWeb = function(){
-    var loginTemplate = '<div class="loginFormBox loginPosStyle modalLogin">'+
-        '<div class="login-t"><h1>账号登录</h1><div class="goRegist">没有账号？<a href="">注册</a></div></div>'+
-        '<div class="login-b">'+
-        '<div class="userBox loginInp">'+
-        '<div class="loginTag"><em class="iconfont icon-toux"></em></div>'+
-        '<input class="form-control" type="text" placeholder="输入用户名"/>'+
-        '<div class="delBtn"><em class="iconfont icon-close"></em></div>'+
-        '</div>'+
-        '<div class="pwdBox loginInp">'+
-        '<div class="loginTag"><em class="iconfont icon-suo2"></em></div>'+
-        '<input class="form-control" type="password" placeholder="输入登陆密码"/>'+
-        '<div class="delBtn"><em class="iconfont icon-close"></em></div>'+
-        '</div>'+
-        '<div class="loginBtn"><a class="orangeBtn" href="">登录</a></div>'+
-        '</div>'+
-        '<div class="fotItem">'+
-        '<div class="recordPwd"><span class="selectBox selected"></span>记住用户名</div>'+
-        '<div class="forgetPwd"><a href="">忘记密码？</a></div>'+
-        '</div>'+
-        '</div>';
-    var globalMask = '<div class="globalMask" style="width: 100%;height: 100%;position: fixed;top: 0;left: 0;background-color: #000;opacity: 0.24;filter:alpha(opacity=24);z-index: 920;"></div>';
-    if($('.globalMask').length<=0) {
-        $('body').append(globalMask);
-    }
-    $('body').append(loginTemplate);
-    var left = -$('.modalLogin').width()/2;
-    var top = -$('.modalLogin').height()/2;
-    $('.modalLogin').css({
-        marginTop:top,
-        marginLeft:left
-    });
-    $('.globalMask').bind('click',function(){
-        $('.modalLogin').remove();
-        $('.globalMask').remove();
-    });
-    QJTModal.inputBlur();
-};
-
 /*============================
  消息框提示
  specil_css:alert-success;alert-danger;alert-info;alert-warning; //弹出的颜色
@@ -438,39 +341,13 @@ UI.countDown=function(options){
     }
 };
 
-//页面初加载弹出
-UI.webLoadShow = function(){
-    var globalMask = '<div class="globalMask" style="width: 100%;height: 100%;position: fixed;top: 0;left: 0;background-color: #fff;opacity: 0.4;filter:alpha(opacity=40);z-index: 9999;"></div>';
-    var htmlTemplate =  '<div class="scanCodeWindow">'+
-                            '<div class="scan_t">'+
-                                '<h2>千机团PC端</h2>'+
-                                '<h2>正在努力优化中</h2>'+
-                            '</div>'+
-                            '<div class="scan_b">'+
-                                '<div class="b_t">'+
-                                    '<h2>请您扫下方二维码</h2>'+
-                                    '<h2>进入千机团微商城采购</h2>'+
-                                '</div>'+
-                                '<div class="QRCode">'+
-                                    '<img src="../Images/Img/scanCodeImg.png" alt=""/>'+
-                                    '<p class="introWord">全网低价 超值优惠等你来拿</p>'+
-                                '</div>'+
-                                '<div><a class="scanCodeBtn" href="javascript:void(0)"></a></div>'+
-                            '</div>'+
-                        '</div>';
-    if($('.globalMask').length<=0) {
-        $('body').append(globalMask);
-    }
-    $('body').append(htmlTemplate);
-    var left = -$('.scanCodeWindow').width()/2;
-    var top = -$('.scanCodeWindow').height()/2;
-    $('.scanCodeWindow').css({
-        marginTop:top,
-        marginLeft:left
-    });
-    $('.scanCodeBtn').bind('click',function(){
-        $('.globalMask').remove();
-        $('.scanCodeWindow').remove();
-    })
+//tab切换
 
-};
+function tabSwitchClick(nav,navItem,switchItem){
+	$(nav).find(navItem).click(function(){
+		$(this).addClass("curr").siblings(navItem).removeClass("curr");
+		var index = $(this).index();
+		$(nav).find(switchItem).eq(index).fadeIn().siblings(switchItem).hide();
+	})
+}
+

@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+/*图片小图预览列表*/
+.spec-preview{width:450px;height:450px;text-align: center;}
+.spec-preview img{max-width: inherit !important;}
+.spec-scroll{margin-top:5px;width:448px;}
+.spec-scroll .prev,.spec-scroll .next{display:block;text-align:center;width:28px;height:28px; cursor:pointer;text-decoration:none;margin-top: 33px;font-size: 20px;}
+.spec-scroll .prev{float:left;margin-right:4px; }
+.spec-scroll .next{float:right;}
+.spec-scroll .items{float:left;position:relative;width: 380px;height: 85px;overflow:hidden;}
+.spec-scroll .items ul{position:absolute;width:999999px;height:85px;}
+.spec-scroll .items ul li{float:left;width: 76px;text-align:center;padding: 10px 3px;}
+.spec-scroll .items ul li img{border:1px solid #e5e5e5;padding:2px;width: 70px;height: 70px;}
+.spec-scroll .items ul li.curr img{border:2px solid #f06402;padding:1px;}
+/*图片放大镜样式*/
+.jqzoom-mag{border:none;position:relative;padding:0px;cursor:pointer;margin:0px;display:block;text-align: center;}
+.zoomdiv-mag{z-index:100;position:absolute;top:0px;left:0px;width:200px;height:200px;background:#ffffff;border:1px solid #CCCCCC;display:none;text-align:center;overflow:hidden;}
+.jqZoomPup-mag{z-index:10;visibility:hidden;position:absolute;top:0px;left:0px;width:20px;height:20px;border:1px solid #aaa;background:#ffffff /*url(../images/zoom.png) 50% center no-repeat*/;opacity: 0.5;-moz-opacity: 0.5;-khtml-opacity: 0.5;filter: alpha(Opacity=50);}
+.spec-preview .bigimg{width:900px;height:900px;}
+.spec-preview .jqzoom-mag img{width:445px; height: 445px;}
+@media (max-width: 1230px){
+	.spec-preview{width: 350px;}
+	.spec-scroll{width: 348px;}
+	.spec-scroll .items{width: 288px;}
+	.spec-scroll .items ul li{width: 70px;}
+	.spec-preview .jqzoom-mag img{width: 345px;}
+}
+
