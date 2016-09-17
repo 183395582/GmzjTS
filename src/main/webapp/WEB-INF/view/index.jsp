@@ -19,12 +19,13 @@
 		<link rel="shortcut icon" href="<%=basePath %>static/images/icon/gm-favicon.ico">
 		<link href="<%=basePath %>static/css/bese.css" rel="stylesheet" type="text/css" />
 		<link href="<%=basePath %>static/css/index.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="<%=basePath %>static/script/jquery-1.11.3.min.js"></script>
 		<script type="text/javascript" src="<%=basePath %>static/script/UI.js"></script>
-		<script type="text/javascript" src="<%=basePath %>static/script/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="<%=basePath %>static/script/commen.js"></script>
+        
 	</head>
 	<body>
-		<div class="header">
+		<div class="header header-topNav">
 			<div class="topNav">
 				<div class="wrapper clearfix">
 					<div class="topNav_l">
@@ -67,8 +68,9 @@
 	                </li>
 	            </ul>
 				</div>
-				
 			</div>
+		</div>
+		<div class="header header-logoSearch">
 			<div class="logo-search">
 				<div class="wrapper clearfix">
 					<div class="logo">
@@ -122,6 +124,8 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="header header-meun">
 			<!--菜单-->
 			<div class="navMenu">
 				<div class="wrapper">
@@ -168,7 +172,7 @@
 		        </div>
 		    </div>
 		</div>
-		
+		<!--header-end-->
 		<div class="banner-box">
 			<!--几张图片轮播切换-->
 			<div class="swiper-container swiper-big-con">
@@ -338,7 +342,7 @@
 							<div class="img-swiper">
 							<div class="swiper-container swiper-small-con">
 							  <ul class="slides">
-								<c:forEach items="${newslist }" var="news" varStatus="status">
+									<c:forEach items="${newslist }" var="news" varStatus="status">
 									<li>
 										<a href="#">
 							        		<img src="${news.imgurl }" />
@@ -349,7 +353,7 @@
 							        	</a>
 									</li>
 								</c:forEach>
-						       </ul>
+						        </ul>
 							</div>
 						</div>
 							<div class="list-t">
@@ -445,37 +449,38 @@
 		<script type="text/javascript" src="<%=basePath %>static/script/select/selectpick.js"></script>
 		<script type="text/javascript" src="<%=basePath %>static/script/jquery.flexslider-min.js"></script>
 		<script>
-		//banner图片切换
-		$(function(){ 
-			$('.swiper-big-con').flexslider({animation: "slide",pauseOnHover:true,slideshowSpeed:3000 });
-			$('.swiper-small-con').flexslider({animation: "slide",pauseOnHover:true,slideshowSpeed:4000 });
-			/* 设置评分星星显示 */
-			$(".score").each(function(){
-				handleScore(this);
-			});
-			
-			function handleScore(e){
-				var score = $(e).html();
-				/* 完整星星数 */
-				var complete = Math.floor(score);
-				/* 半颗星星数 */
-				(score % 1) == 0 ? half = 0 : half = 1;
-				/* 空星星数 */
-				var empty = parseInt(5) - parseInt(complete) - parseInt(half);
-				var html = "";
-				for (var i = 0; i < complete; i++){
-					html += '<dd class="iconfont icon-pingjiaxingxing"></dd>';
-				}
-				for (var i = 0; i < half; i++){
-					html += '<dd class="iconfont icon-pingfenxingban"></dd>';
-				}
-				for (var i = 0; i < empty; i++){
-					html += '<dd class="iconfont icon-pingjiaxingxing1"></dd>';
-				}
-				$(e).before(html);
-			}
-			
+		 //下拉选择
+		$("#select-opt").selectpick({container:'.select-list',onSelect:function(value,text){
+			enAble();}
 		});
+   
+		$('.swiper-big-con').flexslider({animation: "slide",pauseOnHover:true,slideshowSpeed:3000 });
+		$('.swiper-small-con').flexslider({animation: "slide",pauseOnHover:true,slideshowSpeed:4000 });
+		/* 设置评分星星显示 */
+		$(".score").each(function(){
+			handleScore(this);
+		});
+		
+		function handleScore(e){
+			var score = $(e).html();
+			/* 完整星星数 */
+			var complete = Math.floor(score);
+			/* 半颗星星数 */
+			(score % 1) == 0 ? half = 0 : half = 1;
+			/* 空星星数 */
+			var empty = parseInt(5) - parseInt(complete) - parseInt(half);
+			var html = "";
+			for (var i = 0; i < complete; i++){
+				html += '<dd class="iconfont icon-pingjiaxingxing"></dd>';
+			}
+			for (var i = 0; i < half; i++){
+				html += '<dd class="iconfont icon-pingfenxingban"></dd>';
+			}
+			for (var i = 0; i < empty; i++){
+				html += '<dd class="iconfont icon-pingjiaxingxing1"></dd>';
+			}
+			$(e).before(html);
+		}
 		
 		</script>
 	</body>

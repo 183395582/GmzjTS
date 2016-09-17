@@ -24,7 +24,7 @@ import com.gmzj.service.NewsService;
 public class IndexController {
 
 	@Autowired
-	private CemeteryService companyService;
+	private CemeteryService CemeteryService;
 	@Autowired
 	private NewsService newsService;
 	@Autowired
@@ -35,13 +35,13 @@ public class IndexController {
     	//查询记录数
     	int num = 4;
     	//公墓陵园
-    	List<Cemetery> gmlist = companyService.findCompanys4Index(ComType.fw01.getIndex(), num);
+    	List<Cemetery> gmlist = CemeteryService.findCemeterys4Index(ComType.fw01.getIndex(), num);
     	model.addAttribute("gmlist", gmlist);
     	//殡仪服务
-    	List<Cemetery> bylist = companyService.findCompanys4Index(ComType.fw02.getIndex(), num);
+    	List<Cemetery> bylist = CemeteryService.findCemeterys4Index(ComType.fw02.getIndex(), num);
     	model.addAttribute("bylist", bylist);
     	//风水堪舆
-    	List<Cemetery> fslist = companyService.findCompanys4Index(ComType.fw03.getIndex(), num);
+    	List<Cemetery> fslist = CemeteryService.findCemeterys4Index(ComType.fw03.getIndex(), num);
     	model.addAttribute("fslist", fslist);
     	//新闻资讯
     	List<News> newslist = newsService.findNews4Index(num);
