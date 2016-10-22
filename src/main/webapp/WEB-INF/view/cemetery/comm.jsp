@@ -112,14 +112,14 @@
 			<div class="navMenu">
 				<div class="wrapper">
 					<ul class="clearfix">
-						<li><a href="#">首页</a></li>
-						<li class="curr"><a href="#">公墓陵园</a></li>
-						<li><a href="#">殡仪服务</a></li>
-						<li><a href="#">风水堪舆</a></li>
-						<li><a href="#">百科</a></li>
-						<li><a href="#">文章</a></li>
-						<li><a href="#">特色服务</a></li>
-						<li><a href="#">用品商城</a></li>
+						<li class="curr"><a href="#">首页</a></li>
+						<li><a href="#">墓地大全</a></li>
+						<li><a href="#">地图选墓</a></li>
+						<li><a href="#">墓地风水</a></li>
+						<li><a href="#">购墓指南</a></li>
+						<li><a href="#">墓地咨询</a></li>
+						<li><a href="#">预约看墓/购墓</a></li>
+						<li><a href="#">平台优惠</a></li>
 					</ul>
 				</div>
 			</div>

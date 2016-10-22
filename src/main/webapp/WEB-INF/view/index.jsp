@@ -19,9 +19,9 @@
 		<link rel="shortcut icon" href="<%=basePath %>static/images/icon/gm-favicon.ico">
 		<link href="<%=basePath %>static/css/bese.css" rel="stylesheet" type="text/css" />
 		<link href="<%=basePath %>static/css/index.css" rel="stylesheet" type="text/css" />
-		<script type="text/javascript" src="<%=basePath %>static/script/jquery-1.11.3.min.js"></script>
 		<script type="text/javascript" src="<%=basePath %>static/script/UI.js"></script>
 		<script type="text/javascript" src="<%=basePath %>static/script/commen.js"></script>
+		<jsp:include page="comm/script.jsp"></jsp:include>
         
 	</head>
 	<body>
@@ -131,7 +131,7 @@
 				<div class="wrapper">
 					<ul class="clearfix">
 						<li class="curr"><a href="#">首页</a></li>
-						<li><a href="<%=basePath %>cemetery/">公墓陵园</a></li>
+						<li><a href="<%=basePath %>cemetery?page=index">公墓陵园</a></li>
 						<li><a href="#">殡仪服务</a></li>
 						<li><a href="#">风水堪舆</a></li>
 						<li><a href="#">百科</a></li>
