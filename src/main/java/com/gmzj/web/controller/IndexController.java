@@ -23,7 +23,7 @@ import com.gmzj.service.NewsService;
  *
  */
 @Controller
-public class IndexController {
+public class IndexController extends BaseController{
 
 	@Autowired
 	private CemeteryService CemeteryService;

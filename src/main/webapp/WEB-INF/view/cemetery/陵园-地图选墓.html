@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=8" >
+		<title>公墓陵园</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<link rel="shortcut icon" href="images/icon/gm-favicon.ico">
+		<link href="css/bese.css" rel="stylesheet" type="text/css" />
+		<link href="css/inside.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="script/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="script/UI.js"></script>
+		<script type="text/javascript" src="script/commen.js"></script>
+        <!--scrollbar-->
+       <script type="text/javascript" src="script/slimscroll/jquery.slimscroll.js"></script>
+	</head>
+	<body>
+		<div class="header header-topNav">
+			<div class="topNav">
+				<div class="wrapper clearfix">
+					<div class="topNav_l">
+						<ul>
+							<li><a href=""><img src="images/icon/logo.png" width="100px"/></a></li>
+				            <li><a href="">首页 </a></li>
+				            <li><a href="">公墓/陵园</a></li>
+				            <li><a href="">殡仪服务</a></li>
+				            <li><a href="">风水堪舆</a></li>
+				            <li><a href="">百科 </a></li>
+				            <li><a href="">文章</a></li>
+				            <li><a href="">特色服务</a></li>
+						</ul>
+					</div>
+				<!--登陆注册类-->
+	            <ul class="topNav_r clearfix">
+	            	<li><a href="">登录</a></li>
+		            <li><a href="">注册</a></li>
+		            <li class="userBox hide"><p class="g9">你好，<span class="userName">xxxx</span></p></li>
+		            <li class="exit line-r hide"><a href="">退出</a></li>
+	                <li class="service-peo noBag">
+	                    <a href="javascript:;" class="servBtn">客户服务<span class="iconfont icon-iconfonticonfontjiantoucopy icon-up"></span><span class="iconfont icon-iconfonticonfontjiantou2 icon-down"></span></a>
+	                    <div class="serviceBox">
+	                        <div class="tit blue-f">咨询热线：40086-95522</div>
+	                        <ul class="clearfix">
+	                        	<li><a href="#"><em class="iconfont icon-iconfonttuanduicheng"></em><span>关于我们</span></a></li>
+	                        	<li><a href="#"><em class="iconfont icon-iconfontweibiaoti5"></em><span>特色服务</span></a></li>
+	                        	<li><a href="#"><em class="iconfont icon-iconfontliuyanban"></em><span>客户留言</span></a></li>
+	                        </ul>
+	                        <div class="sm">
+	                        	<img src="images/pro/an-wx.jpg" class="fl"/>
+	                        	<div class="tt fr pt15">
+	                        		扫描二维码 <br/>关注官方微信
+	                        	</div>
+	                        </div>
+	                    </div>
+	                </li>
+	            </ul>
+				</div>
+			</div>
+		</div>
+		<div class="header header-logoSearch">
+			<div class="logo-search">
+				<div class="wrapper clearfix">
+					<div class="logo pt15">
+						<a href=""><img src="images/icon/ly-logo.png"/></a>
+					</div>
+					<div class="city-box">
+						<div class="changeCity" id="changeCity">
+		                    <div class="bgDiv"></div>
+		                    <div class="citys">
+		                        <span class="cityName">北京 <span class="changeCityTag">[切换城市]</span></span>
+		                    </div>
+		                    <div class="item-CityList">
+		                        <div class="cl-h">请选择所在的收货城市</div>
+		                        <div class="cl-b">
+		                            <ul class="cf">
+		                                <li><a href="javascript:void(0);">北京</a></li>
+		                                <li><a href="javascript:void(0);">上海</a></li>
+		                                <li><a href="javascript:void(0);">广州</a></li>
+		                                <li><a href="javascript:void(0);">南京</a></li>
+		                                <li><a href="javascript:void(0);">深圳</a></li>
+		                                <li class="active"><a href="javascript:void(0);">成都</a></li>
+		                            </ul>
+		                        </div>
+		                    </div>
+		                </div>
+					</div>
+					<div class="searchBox">
+						<div class="select-list">
+							<select id="select-opt">
+								<option>陵园墓地</option>
+								<option value="1">陵园墓地1</option>
+								<option value="2">陵园墓地2</option>
+								<option value="3" selected>陵园墓地3</option>
+								<option value="4">陵园墓地4</option>
+							</select>
+						</div>
+						<div class="input-text">
+							<input class="form-control" type="search" placeholder="请输入你是搜索的关键词"/>
+
+						</div>
+						<div class="search-btn">
+							<input type="button" value="搜索" class="searchBtn"/>
+						</div>
+					</div>
+					<div class="phone-number blue-f clearfix">
+						<span class="iconfont icon-iconfontdianhua icon-dh"></span>
+						<div class="info">
+							<p>全国24小时服务热线</p>
+							<p class="nu">4001234567</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header header-meun">
+			<!--菜单-->
+			<div class="navMenu">
+				<div class="wrapper">
+					<ul class="clearfix">
+						<li><a href="#">首页</a></li>
+						<li class="curr"><a href="#">公墓陵园</a></li>
+						<li><a href="#">殡仪服务</a></li>
+						<li><a href="#">风水堪舆</a></li>
+						<li><a href="#">百科</a></li>
+						<li><a href="#">文章</a></li>
+						<li><a href="#">特色服务</a></li>
+						<li><a href="#">用品商城</a></li>
+					</ul>
+				</div>
+			</div>
+			 <!--右侧-->
+			<div class="rightNav">
+		        <div class="navBox">
+		            <div class="centerItem">
+		                <ul>
+		                  	<li class="itemH">
+		                        <a href="javascript:;"><em class="iconfont icon-iconfontkefu"></em>客服</a>
+		                        <div class="tags">
+		                            <div class="tagsBox">24小时在线</div>
+		                        </div>
+		                    </li>
+		                    <li class="itemH">
+		                    	<a href="javascript:;"><em class="iconfont icon-iconfontweixin"></em>微信</a>
+		                    	<div class="tags tags-ma">
+		                            <div class="tagsBox"><img src="images/pro/an-wx.jpg" class="img"/></div>
+		                        </div>
+		                    </li>
+		                    <li class="itemH">
+		                        <a href="javascript:;"><em class="iconfont icon-iconfontdianhua"></em>电话</a>
+		                        <div class="tags">
+		                            <div class="tagsBox">4001234567</div>
+		                        </div>
+		                    </li>
+		                </ul>
+		            </div>
+		            <div class="backToTop">
+		               <a href="javascript:void(0);"><em class="iconfont icon-iconfontgotop"></em></a>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<!--header-end-->
+		
+		<div class="site-nav">
+			<div class="wrapper">
+				<i class="iconfont icon-dingwei"></i><a href="">公墓之家 </a> &gt; <a href="">公墓陵园</a> &gt; 地图选墓
+			</div>
+		</div>
+		
+		<div class="main-con">
+			<div class="wrapper">
+				<div class="mapBox clearfix">
+					<div class="btnscoll">
+						<div id="btnshow"><i class="iconfont icon-jiantou-copy"></i></div>
+						<div id="btnhide" style="display: none;"><i class="iconfont icon-jiantou-copy1"></i></div>
+					</div>
+					<div class="side-slect">
+						<div class="areSlect">
+							<div class="title">所在区域</div>
+							<ul class="clearfix">
+								<li class="curr"><a href="#">不限</a></li>
+								<li><a href="">武侯区</a></li>
+								<li><a href="">锦江区</a></li>
+								<li><a href="">成华区</a></li>
+								<li><a href="">金牛区</a></li>
+								<li><a href="">温江区</a></li>
+								<li><a href="">龙泉驿区</a></li>
+								<li><a href="">青白江区</a></li>
+								<li><a href="">新都区</a></li>
+								<li><a href="">双流县</a></li>
+								<li><a href="">金堂县</a></li>
+								<li><a href="">郫县</a></li>
+								<li><a href="">大邑县</a></li>
+								<li><a href="">浦江县</a></li>
+								<li><a href="">都江堰市</a></li>
+								<li><a href="">邛崃市</a></li>
+								<li><a href="">崇州市</a></li>
+							</ul>
+						</div>
+						<div class="mt20 side-list">
+							<div class="listMore-scroll">
+							<div class="item">
+								<div class="num orange-bg">1</div>
+								<div class="info">
+									<div class="title clearfix">
+										<a href="#" class="name">青城山味江陵园</a>
+										<div class="t-f">
+											<span class="orangeBtn-line btn">认证</span>
+											<span class="redBtn-line btn">团购</span>
+										</div>
+										<a href="" class="camera-icon"><i class="iconfont icon-dingwei"></i></a>
+									</div>
+									<div class="ds-g">成都市都江堰伟江区</div>
+									<div class="price">￥88343 <span>起</span></div>
+									<div class="ar"><a href="">查看资料 > </a></div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="num orange-bg">2</div>
+								<div class="info">
+									<div class="title clearfix">
+										<a href="#" class="name">青城山味江陵园</a>
+										<div class="t-f">
+											<span class="orangeBtn-line btn">认证</span>
+											<span class="redBtn-line btn">团购</span>
+										</div>
+										<a href="" class="camera-icon"><i class="iconfont icon-dingwei"></i></a>
+									</div>
+									<div class="ds-g">成都市都江堰伟江区</div>
+									<div class="price">￥88343 <span>起</span></div>
+									<div class="ar"><a href="">查看资料 > </a></div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="num orange-bg">3</div>
+								<div class="info">
+									<div class="title clearfix">
+										<a href="#" class="name">青城山味江陵园</a>
+										<div class="t-f">
+											<span class="orangeBtn-line btn">认证</span>
+											<span class="redBtn-line btn">团购</span>
+										</div>
+										<a href="" class="camera-icon"><i class="iconfont icon-dingwei"></i></a>
+									</div>
+									<div class="ds-g">成都市都江堰伟江区</div>
+									<div class="price">￥88343 <span>起</span></div>
+									<div class="ar"><a href="">查看资料 > </a></div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="num blue-bg">4</div>
+								<div class="info">
+									<div class="title clearfix">
+										<a href="#" class="name">青城山味江陵园</a>
+										<div class="t-f">
+											<span class="orangeBtn-line btn">认证</span>
+											<span class="redBtn-line btn">团购</span>
+										</div>
+										<a href="" class="camera-icon"><i class="iconfont icon-dingwei"></i></a>
+									</div>
+									<div class="ds-g">成都市都江堰伟江区</div>
+									<div class="price">￥88343 <span>起</span></div>
+									<div class="ar"><a href="">查看资料 > </a></div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="num blue-bg">5</div>
+								<div class="info">
+									<div class="title clearfix">
+										<a href="#" class="name">青城山味江陵园</a>
+										<div class="t-f">
+											<span class="orangeBtn-line btn">认证</span>
+											<span class="redBtn-line btn">团购</span>
+										</div>
+										<a href="" class="camera-icon"><i class="iconfont icon-dingwei"></i></a>
+									</div>
+									<div class="ds-g">成都市都江堰伟江区</div>
+									<div class="price">￥88343 <span>起</span></div>
+									<div class="ar"><a href="">查看资料 > </a></div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="num blue-bg">6</div>
+								<div class="info">
+									<div class="title clearfix">
+										<a href="#" class="name">青城山味江陵园</a>
+										<div class="t-f">
+											<span class="orangeBtn-line btn">认证</span>
+											<span class="redBtn-line btn">团购</span>
+										</div>
+										<a href="" class="camera-icon"><i class="iconfont icon-dingwei"></i></a>
+									</div>
+									<div class="ds-g">成都市都江堰伟江区</div>
+									<div class="price">￥88343 <span>起</span></div>
+									<div class="ar"><a href="">查看资料 > </a></div>
+								</div>
+							</div>
+						</div>
+						</div>
+						
+					</div>
+					<div class="main-map">
+						<div class="mapCon"><img src="images/pro/ly-img16.jpg"/></div>
+					</div>
+				</div>
+				
+				
+				<!--友情链接-->
+				<div class="friend-link mt40">
+					<h2>友情链接</h2>
+					<div class="link-more">
+						<a href="#">四川殡葬 </a>
+						<a href="#">绵阳殡葬</a>
+						<a href="#">重庆殡葬</a>
+						<a href="#">开阳殡葬</a>
+						<a href="#">西安殡葬</a>
+						<a href="#">舟山殡葬</a>
+						<a href="#">淮海殡葬</a>
+						<a href="#">北海殡葬</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="wrapper clearfix">
+				<div class="col-fl tips-note">
+					<dl>
+						<dt>平台功能</dt>
+						<dd><a href="#">天使服务</a></dd>
+						<dd><a href="#">生前契约 </a></dd>
+						<dd><a href="#">在线告别式 </a></dd>
+						<dd><a href="#">二维码扫墓</a></dd>
+						<dd><a href="#">特色服务</a></dd>
+					</dl>
+					<dl>
+						<dt>服务指南</dt>
+						<dd><a href="#">服务预约流程</a></dd>
+						<dd><a href="#">在线告别式 </a></dd>
+						<dd><a href="#">二维码扫墓</a></dd>
+						<dd><a href="#">特色服务</a></dd>
+					</dl>
+					<dl>
+						<dt>商家合作</dt>
+						<dd><a href="#">合作流程</a></dd>
+						<dd><a href="#">合作政策</a></dd>
+						<dd><a href="#">商家评级体系</a></dd>
+					</dl>
+				</div>
+				<div class="col-fl media-box">
+					<div class="weixin media-icon">
+						<em class="iconfont icon-weixin"></em>
+						微信公众号
+					</div>
+					<div class="weixin media-icon">
+						<em class="iconfont icon-weibo"></em>
+						官方微博
+					</div>
+				</div>
+				<div class="col-fl e-wm">
+					<div class="img">
+						<img src="images/pro/an-wx.jpg"/>
+					</div>
+					<p>至终守护 &nbsp; &nbsp; 温暖如家</p>
+				</div>
+				
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="wrapper">
+				<p class="mb5">copyright2012-2016  公墓之家，ALLRights  Reserved  ICP备案：蜀ICP备140009697号-2</p>
+				<img src="images/icon/footer.jpg" />
+			</div>
+		</div>
+		<!--下拉菜单-->
+		<link href="script/select/selectpick.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="script/select/selectpick.js"></script>
+		<script type="text/javascript">
+			 //下拉选择
+			$("#select-opt").selectpick({container:'.select-list',onSelect:function(value,text){
+				enAble();}
+			});
+			//联动下拉菜单交互
+            $('.listMore-scroll').slimscroll({ opacity:1, size : 4/*,railVisible:true*/, color:'#707070', railColor:'#e3e3e3', railVisible:true, railOpacity:1});
+            //侧边点击
+            //点击收缩和展示按钮来显示隐藏二级菜单
+            
+	        $("#btnshow").bind("click", function() {
+	            $(".side-slect").css("display", "none");
+	            $(".main-map").css("margin-left", 0);
+	            $(this).parents(".btnscoll").css("left",0);
+	            $("#btnhide").show();
+	            $("#btnshow").hide();
+	        });
+	        $("#btnhide").bind("click", function() {
+	            $(".side-slect").css("display", "block");
+	            $(".main-map").css("margin-left", 360);
+	             $(this).parents(".btnscoll").css("left",360);
+	            $("#btnhide").hide();
+	            $("#btnshow").show();
+	        });
+	
+			
+		</script>
+	</body>
+	
+</html>

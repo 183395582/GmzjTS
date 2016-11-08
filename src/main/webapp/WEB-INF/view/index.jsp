@@ -1,13 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
+<%@include file="mytags.jsp"%>
 <html lang="zh">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -16,12 +8,8 @@
 		<title>公墓之家</title>
 		<meta name="description" content="">
 		<meta name="keywords" content="">
-		<link rel="shortcut icon" href="<%=basePath %>static/images/icon/gm-favicon.ico">
-		<link href="<%=basePath %>static/css/bese.css" rel="stylesheet" type="text/css" />
-		<link href="<%=basePath %>static/css/index.css" rel="stylesheet" type="text/css" />
-		<script type="text/javascript" src="<%=basePath %>static/script/UI.js"></script>
-		<script type="text/javascript" src="<%=basePath %>static/script/commen.js"></script>
-		<jsp:include page="comm/script.jsp"></jsp:include>
+		<jsp:include page="comm/script.jsp"/>
+		<jsp:include page="comm/css.jsp"/>
         
 	</head>
 	<body>
@@ -41,8 +29,8 @@
 	               <li class="lineLi Phcode-click">
 	                	<a href="javascript:;" class="Phcode-Btn"><em class="iconfont icon-iconfontshouji"></em>手机版</a>
 	                	<div class="PhcodeBox">
-	                        <div class="img img-ios"><img src="<%=basePath %>static/images/icon/img-1.jpg"/></div>
-	                        <div class="img img-android"><img src="<%=basePath %>static/images/icon/img-4.jpg"/></div>
+	                        <div class="img img-ios"><img src="${webRoot }static/images/icon/img-1.jpg"/></div>
+	                        <div class="img img-android"><img src="${webRoot }static/images/icon/img-4.jpg"/></div>
                             <div class="btnBox">
                             	<a href="#" class="iosClick orangBtn">苹果手机客户端</a>
                             	<a href="#" class="andClick orangBtn">安卓手机客户端</a>
@@ -59,7 +47,7 @@
 	                        	<li><a href="#"><em class="iconfont icon-iconfontliuyanban"></em><span>客户留言</span></a></li>
 	                        </ul>
 	                        <div class="sm">
-	                        	<img src="<%=basePath %>static/images/pro/an-wx.jpg" class="fl"/>
+	                        	<img src="${webRoot }static/images/pro/an-wx.jpg" class="fl"/>
 	                        	<div class="tt fr pt15">
 	                        		扫描二维码 <br/>关注官方微信
 	                        	</div>
@@ -74,28 +62,10 @@
 			<div class="logo-search">
 				<div class="wrapper clearfix">
 					<div class="logo">
-						<a href=""><img src="<%=basePath %>static/images/icon/logo.png"/></a>
+						<a href=""><img src="${webRoot }static/images/icon/logo.png"/></a>
 					</div>
 					<div class="city-box">
-						<div class="changeCity" id="changeCity">
-		                    <div class="bgDiv"></div>
-		                    <div class="citys">
-		                        <span class="cityName">北京 <span class="changeCityTag">[切换城市]</span></span>
-		                    </div>
-		                    <div class="item-CityList">
-		                        <div class="cl-h">请选择所在的收货城市</div>
-		                        <div class="cl-b">
-		                            <ul class="cf">
-		                                <li><a href="javascript:void(0);">北京</a></li>
-		                                <li><a href="javascript:void(0);">上海</a></li>
-		                                <li><a href="javascript:void(0);">广州</a></li>
-		                                <li><a href="javascript:void(0);">南京</a></li>
-		                                <li><a href="javascript:void(0);">深圳</a></li>
-		                                <li class="active"><a href="javascript:void(0);">成都</a></li>
-		                            </ul>
-		                        </div>
-		                    </div>
-		                </div>
+						<jsp:include page="comm/city.jsp"/>
 					</div>
 					<div class="searchBox">
 						<div class="select-list">
@@ -109,7 +79,6 @@
 						</div>
 						<div class="input-text">
 							<input class="form-control" type="search" placeholder="请输入你是搜索的关键词"/>
-
 						</div>
 						<div class="search-btn">
 							<input type="button" value="搜索" class="searchBtn"/>
@@ -131,7 +100,7 @@
 				<div class="wrapper">
 					<ul class="clearfix">
 						<li class="curr"><a href="#">首页</a></li>
-						<li><a href="<%=basePath %>cemetery?page=index">公墓陵园</a></li>
+						<li><a href="${webRoot }cemetery/index">公墓陵园</a></li>
 						<li><a href="#">殡仪服务</a></li>
 						<li><a href="#">风水堪舆</a></li>
 						<li><a href="#">百科</a></li>
@@ -155,7 +124,7 @@
 		                    <li class="itemH">
 		                    	<a href="javascript:;"><em class="iconfont icon-iconfontweixin"></em>微信</a>
 		                    	<div class="tags tags-ma">
-		                            <div class="tagsBox"><img src="<%=basePath %>static/images/pro/an-wx.jpg" class="img"/></div>
+		                            <div class="tagsBox"><img src="${webRoot }static/images/pro/an-wx.jpg" class="img"/></div>
 		                        </div>
 		                    </li>
 		                    <li class="itemH">
@@ -177,16 +146,16 @@
 			<!--几张图片轮播切换-->
 			<div class="swiper-container swiper-big-con">
 			   <ul class="slides">
-					<li><a href="#"><img src="<%=basePath %>static/images/banner/banner-big1.jpg" /></a> </li>
-					<li><a href="#"><img src="<%=basePath %>static/images/banner/banner-big1.jpg" /></a> </li>
-		            <li><a href="#"><img src="<%=basePath %>static/images/banner/banner-big1.jpg" /></a> </li>
-		            <li><a href="#"><img src="<%=basePath %>static/images/banner/banner-big1.jpg" /></a> </li>
+					<li><a href="#"><img src="${webRoot }static/images/banner/banner-big1.jpg" /></a> </li>
+					<li><a href="#"><img src="${webRoot }static/images/banner/banner-big1.jpg" /></a> </li>
+		            <li><a href="#"><img src="${webRoot }static/images/banner/banner-big1.jpg" /></a> </li>
+		            <li><a href="#"><img src="${webRoot }static/images/banner/banner-big1.jpg" /></a> </li>
 		        </ul>
 
 			</div>
 			<div class="pos-windows-note">
 				<div class="title">
-					<img src="<%=basePath %>static/images/icon/text-note.png"/>
+					<img src="${webRoot }static/images/icon/text-note.png"/>
 					<p>致力于打造中国殡葬行业第一品牌</p>
 				</div>
 				<div class="info">
@@ -236,7 +205,7 @@
 					<c:forEach items="${gmlist }" var="gm" varStatus="status">
 						<a class="col-4 col item" href="">
 							<div class="img-box">
-								<p class="img"><img src="<%=basePath %>${gm.imgUrl }" /></p>
+								<p class="img"><img src="${webRoot }${gm.imgUrl }" /></p>
 							</div>
 							<div class="text-box">
 								<div class="title-box clearfix">
@@ -261,8 +230,8 @@
 					<c:forEach items="${bylist }" var="by" varStatus="status">
 						<a class="col-4 col item" href="">
 							<div class="img-box">
-								<!--<span class="tips-icon-left"><img src="<%=basePath %>static/images/icon/yibing-icon1.png"/></span>-->
-								<p class="img"><img src="<%=basePath %>${by.imgUrl }" /></p>
+								<!--<span class="tips-icon-left"><img src="${webRoot }static/images/icon/yibing-icon1.png"/></span>-->
+								<p class="img"><img src="${webRoot }${by.imgUrl }" /></p>
 								<div class="star-hov">
 									<dl>
 										<dd class="score">${fn:split(by.score, ",")[0] }</dd>
@@ -297,7 +266,7 @@
 					<c:forEach items="${fslist }" var="fs" varStatus="status">
 						<a class="col-4 col item" href="">
 							<div class="img-box">
-								<p class="img"><img src="<%=basePath %>${fs.imgUrl }" /></p>
+								<p class="img"><img src="${webRoot }${fs.imgUrl }" /></p>
 								<div class="star-hov">
 									<dl>
 										<dd class="score">${fn:split(fs.score, ",")[0] }</dd>
@@ -328,11 +297,11 @@
 				</div>
 				<!--广告图-->
 				<div class="ad-box border-all">
-					<a href="#"><img src="<%=basePath %>static/images/pro/img13.jpg"/></a>
-					<a href="#"><img src="<%=basePath %>static/images/pro/img14.jpg"/></a>
-					<a href="#"><img src="<%=basePath %>static/images/pro/img15.jpg"/></a>
-					<a href="#"><img src="<%=basePath %>static/images/pro/img16.jpg"/></a>
-					<a href="#"><img src="<%=basePath %>static/images/pro/img17.jpg"/></a>
+					<a href="#"><img src="${webRoot }static/images/pro/img13.jpg"/></a>
+					<a href="#"><img src="${webRoot }static/images/pro/img14.jpg"/></a>
+					<a href="#"><img src="${webRoot }static/images/pro/img15.jpg"/></a>
+					<a href="#"><img src="${webRoot }static/images/pro/img16.jpg"/></a>
+					<a href="#"><img src="${webRoot }static/images/pro/img17.jpg"/></a>
 				</div>
 				<!--新闻资讯-->
 				<div class="news-con clearfix">
@@ -431,7 +400,7 @@
 				</div>
 				<div class="col-fl e-wm">
 					<div class="img">
-						<img src="<%=basePath %>static/images/pro/an-wx.jpg"/>
+						<img src="${webRoot }static/images/pro/an-wx.jpg"/>
 					</div>
 					<p>至终守护 &nbsp; &nbsp; 温暖如家</p>
 				</div>
@@ -441,46 +410,37 @@
 		<div class="footer-bottom">
 			<div class="wrapper">
 				<p class="mb5">copyright2012-2016  公墓之家，ALLRights  Reserved  ICP备案：蜀ICP备140009697号-2</p>
-				<img src="<%=basePath %>static/images/icon/footer.jpg" />
+				<img src="${webRoot }static/images/icon/footer.jpg" />
 			</div>
 		</div>
-		<!--下拉菜单-->
-		<link href="<%=basePath %>static/script/select/selectpick.css" rel="stylesheet" type="text/css" />
-		<script type="text/javascript" src="<%=basePath %>static/script/select/selectpick.js"></script>
-		<script type="text/javascript" src="<%=basePath %>static/script/jquery.flexslider-min.js"></script>
 		<script>
-		 //下拉选择
-		$("#select-opt").selectpick({container:'.select-list',onSelect:function(value,text){
+		$("#select-opt").selectpick({container:'.select-list', onSelect:function(value,text){
 			enAble();}
 		});
    
-		$('.swiper-big-con').flexslider({animation: "slide",pauseOnHover:true,slideshowSpeed:3000 });
-		$('.swiper-small-con').flexslider({animation: "slide",pauseOnHover:true,slideshowSpeed:4000 });
-		/* 设置评分星星显示 */
+		$('.swiper-big-con').flexslider({animation: "slide", pauseOnHover:true, slideshowSpeed:3000, directionNav: false });
+		$('.swiper-small-con').flexslider({animation: "slide", pauseOnHover:true, slideshowSpeed:4000 });
+		
+		//处理评分
 		$(".score").each(function(){
 			handleScore(this);
 		});
 		
-		function handleScore(e){
-			var score = $(e).html();
-			/* 完整星星数 */
-			var complete = Math.floor(score);
-			/* 半颗星星数 */
-			(score % 1) == 0 ? half = 0 : half = 1;
-			/* 空星星数 */
-			var empty = parseInt(5) - parseInt(complete) - parseInt(half);
-			var html = "";
-			for (var i = 0; i < complete; i++){
-				html += '<dd class="iconfont icon-pingjiaxingxing"></dd>';
-			}
-			for (var i = 0; i < half; i++){
-				html += '<dd class="iconfont icon-pingfenxingban"></dd>';
-			}
-			for (var i = 0; i < empty; i++){
-				html += '<dd class="iconfont icon-pingjiaxingxing1"></dd>';
-			}
-			$(e).before(html);
-		}
+		//根据ip获取所在城市及区域列表
+		/* $(window).load(function() {
+			jQuery.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js",function(){
+			    province = remote_ip_info["province"];
+			    city = remote_ip_info["city"];  
+				$(".cityName").html(city);
+				$.get("${webRoot }pub/findRegionByName", {"cityName":city}, function(resp){
+					  str = "<li class=\"curr\"><a href=\"javascript:;\">不限 </a></li>"
+					  $(resp.data).each(function(index, element){
+						  str += "<li><a href=\"javascript:;\">" + element.name + "</a></li>";
+					  });
+					  $(".region").html(str);
+				});
+			});
+		}); */
 		
 		</script>
 	</body>
