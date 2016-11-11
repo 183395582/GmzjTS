@@ -161,6 +161,7 @@ angular.module('tm.pagination', []).directive('tmPagination',[function(){
             scope.prevPage = function() {
                 if(conf.currentPage > 1){
                     conf.currentPage -= 1;
+                    conf.onChange(conf.currentPage);
                 }
             };
 
@@ -168,6 +169,7 @@ angular.module('tm.pagination', []).directive('tmPagination',[function(){
             scope.nextPage = function() {
                 if(conf.currentPage < conf.numberOfPages){
                     conf.currentPage += 1;
+                    conf.onChange(conf.currentPage);
                 }
             };
 

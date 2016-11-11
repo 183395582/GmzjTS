@@ -152,4 +152,10 @@
 	$(document).on('click', '.hov-bg li', function(){
 		$(this).addClass("curr").siblings(".hov-bg li").removeClass("curr");
 	});
+	
+	function processScore(){
+		$(".score").each(function(){
+			handleScore(this);
+		});
+	}
 </script>

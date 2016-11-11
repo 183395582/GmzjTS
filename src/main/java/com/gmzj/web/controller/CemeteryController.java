@@ -2,6 +2,7 @@ package com.gmzj.web.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -58,7 +59,12 @@ public class CemeteryController extends BaseController{
     }
 	
 	@RequestMapping("/{page}")
-	public String view(Model model, @PathVariable("page") String page){
+	public String view(HttpServletRequest req, Model model, @PathVariable("page") String page){
+		Enumeration<String> enumerations = req.getParameterNames();
+		while (enumerations.hasMoreElements()) {
+			String name = enumerations.nextElement();
+			model.addAttribute(name, req.getParameter(name));
+		}
 		model.addAttribute("page", page);
 		return "cemetery/" + page;
 	}
@@ -99,7 +105,6 @@ public class CemeteryController extends BaseController{
 	@ResponseBody
 	@RequestMapping(value = "getCemeterysByPage", method = RequestMethod.GET)
 	public Object getCemeterysByPage(HttpServletRequest req, Page<Cemetery> page, Cemetery cemetery) throws Exception{
-		req.getParameter("page.currentPage");
 		page.setParm(cemetery);
 		List<Cemetery> result = this.cemeteryService.listPage(page);
 		page.setResult(result);

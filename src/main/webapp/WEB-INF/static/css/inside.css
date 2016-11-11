@@ -74,7 +74,7 @@
 .category-brand .item .br-category ul li a:hover{background: #ccc;}
 .category-brand .item .br-category ul li.curr a{background: #f06601;color: #fff;}
 .category-brand .item .closeCon a{border:1px solid #fb7907;color: #666;padding: 0 5px;margin-right: 5px;}
-.category-brand .item .closeCon a .iconfont{border-left: 1px solid #fb7907;color: #fb7907;font-size: 14px;padding-left: 3px;}
+.category-brand .item .closeCon a .iconfont{border-left: 1px solid #fb7907;color: #fb7907;font-size: 14px;padding-left: 3px;margin-left: 3px;}
 .category-brand .item .closeCon{float: left;}
 .category-brand .item .colseAll{float: left;margin-left: 10px;}
 .category-brand .item .colseAll a{color: #fb7907;}
@@ -178,6 +178,7 @@
 .specific-info p{padding: 3px 0;}
 .evaluate-con .m-content{padding: 30px 20px;}
 .evaluate-con .rate{font-size: 60px;font-weight: bold;color: #fa9705;text-align: center;padding-top: 20px;}
+.evaluate-con .rate span{color: #999;font-size: 14px;display: block;margin-top: 20px;font-weight: normal;}
 .evaluate-con .percent{padding-left: 20px;}
 .evaluate-con .percent dl {padding: 2px 0;overflow: hidden;zoom: 1;}
 .evaluate-con .percent dt {float: left;width:38%;color: #999;font-size: 12px;}

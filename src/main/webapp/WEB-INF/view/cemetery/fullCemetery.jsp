@@ -30,9 +30,11 @@
 									<ul class="clearfix hov-bg">
 										<li class="curr"><a href="javascript:;">不限 </a></li>
 										<c:forEach items="${sessionScope.regions }" var="region" varStatus="vs">
-											<li><a href="javascript:alert();">${region.name } </a></li>
+											<li <c:if test="${regionno == region.no }">class="curr"</c:if>>
+												<a href="${webRoot }cemetery/fullCemetery?regionno=${region.no }" >${region.name } </a>
+											</li>
 										</c:forEach>
-										<input name="" id="region" type="hidden" value=""/>
+										<div ng-init="regionno='${regionno}'"/>
 									</ul>
 								</div>
 							</div>
@@ -66,7 +68,7 @@
 									</ul>
 								</div>
 							</div>
-							<div class="item clearfix">
+							<!-- <div class="item clearfix">
 								<div class="labe">已选条件：</div>
 								<div class="br-category clearfix">
 									<div class="closeCon">
@@ -78,7 +80,7 @@
 										<a href="javascript:;">清空所选条件</a>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						</div>
 					</form>
 					<div class="mt25 border-all">
@@ -94,12 +96,7 @@
 									<div class="t-f clearfix">
 										<a href="" class="name">{{x.name}}</a>
 										<dl class="star fl star-ly">
-											<dd class="iconfont icon-pingjiaxingxing"></dd>
-											<dd class="iconfont icon-pingjiaxingxing"></dd>
-											<dd class="iconfont icon-pingjiaxingxing"></dd>
-											<dd class="iconfont icon-pingfenxingban"></dd>
-											<dd class="iconfont icon-pingjiaxingxing1"></dd>
-											<dt>4.6</dt>
+											<dt class="score">{{x.score}}</dt>
 										</dl>
 										<div class="approve-box fl">
 											<span class="orangeBtn-line btn">认证</span> <span
@@ -114,10 +111,10 @@
 										￥{{x.price}} <span>起</span>
 									</div>
 									<div class="mt10">
-										园区印象：<span>环境优美,真山真水</span>
+										园区印象：<span>{{x.introduce.slice(0, 60)}}..</span>
 									</div>
 									<div class="mt5">
-										地 址：<span>成都市 龙泉驿 长松寺</span>
+										地 址：<span>{{x.address}}</span>
 									</div>
 									<div class="c-r-l clearfix">
 										<div class="time fl">
@@ -216,18 +213,12 @@
 						<a href=""><img src="${webRoot }static/images/pro/ly-img8.jpg" /></a>
 					</div>
 					<h2 class="clearfix mt20">
-						<span class="l-t">墓地指面</span> <a href="#" class="more-link-s fr">更多
+						<span class="l-t">墓地指南</span> <a href="#" class="more-link-s fr">更多
 							></a>
 					</h2>
 					<div class="info">
-						<ul class="list">
-							<li><a href="#">中国传统治丧传统中国传统治丧传统中国传中国传统治</a></li>
-							<li><a href="#">中国传统治丧传统中国传统治丧传统中国传</a></li>
-							<li><a href="#">中国传统治丧传统中国传统治丧传统中国传</a></li>
-							<li><a href="#">中国传统治丧传统中国传统治丧传统中国传</a></li>
-							<li><a href="#">中国传统治丧传统中国传统治丧传统中国传</a></li>
-							<li><a href="#">中国传统治丧传统中国传统治丧传统中国传</a></li>
-							<li><a href="#">中国传统治丧传统中国传统治丧传统中国传</a></li>
+						<ul class="list" ng-repeat="x in cemZN.slice(0, 10)">
+							<li><a href="#">{{x.title}}</a></li>
 						</ul>
 					</div>
 				</div>
@@ -325,8 +316,10 @@
 			this.getPage = function($http, $scope, currPage){
 				$http.get("getCemeterysByPage", 
 						{params:{
-							"cemetery.type":"01",
-							"page.currentPage" : currPage
+							"cemetery.type" : "01",
+							"cemetery.regionno" : $scope.regionno,
+							"page.currentPage" : currPage,
+							"page.showCount" : 2
 						}}
 				).success(function (response) {
 					$scope.cemeterys = response.result;
@@ -346,24 +339,27 @@
 			 .success(function (response) {
 				$scope.cemFS = response;
 			});
-			//风水最好的公墓
-			/* $http.get("${webRoot }cemetery/getCemeterys", {params:{order:"score_fs desc"}})
+			//墓地指南
+			$http.get("${webRoot }cemetery/getCemArticles", {params:{type_equalTo:"3"}})
 			 .success(function (response) {
-				$scope.cemeterys = response;
-			}); */
+				$scope.cemZN = response;
+			});
+			
 			//分页函数
 			$scope.paginationConf = {
 		            currentPage: 1,
 		            totalItems: 10,
-		            itemsPerPage: 10,
+		            itemsPerPage: 2,
 		            pagesLength: 8,
 		            perPageOptions: [10],
 		            onChange: function(currPage){
 		            	cemeteryService.getPage($http, $scope, currPage);
+		            	setTimeout("processScore()", 500);
 		            }
 		     };
 			
-			
 		});
+		
+			
 </script>
 </html>
