@@ -92,9 +92,8 @@
 		<div class="wrapper">
 			<ul class="clearfix">
 				<li id="index"><a href="${webRoot }cemetery/index">首页</a></li>
-				<li id="fullCemetery"><a
-					href="${webRoot }cemetery/fullCemetery">墓地大全</a></li>
-				<li><a href="#">地图选墓</a></li>
+				<li id="fullCemetery"><a href="${webRoot }cemetery/fullCemetery">墓地大全</a></li>
+				<li id="map4Cemetery"><a href="${webRoot }cemetery/map4Cemetery">地图选墓</a></li>
 				<li><a href="#">墓地风水</a></li>
 				<li><a href="#">购墓指南</a></li>
 				<li><a href="#">墓地咨询</a></li>
@@ -147,11 +146,6 @@
 	});
 	//菜单选中效果
 	$("#"+"${page}").addClass("curr");
-	
-	//
-	$(document).on('click', '.hov-bg li', function(){
-		$(this).addClass("curr").siblings(".hov-bg li").removeClass("curr");
-	});
 	
 	function processScore(){
 		$(".score").each(function(){

@@ -22,19 +22,22 @@
 		<div class="wrapper">
 			<div class="ly-lr-con clearfix">
 				<div class="left-con">
-					<form action="" id="searchForm">
+					<form action="${webRoot }cemetery/fullCemetery" >
 						<div class="category-brand">
 							<div class="item clearfix">
 								<div class="labe">所在区域：</div>
 								<div class="br-category">
 									<ul class="clearfix hov-bg">
-										<li class="curr"><a href="javascript:;">不限 </a></li>
+										<li <c:if test="${regionno == null }">class="curr"</c:if>>
+											<a href="javascript:;" onclick="GoPage('', this)">不限 </a>
+											<input type="hidden" name="" value=""/>
+										</li>
 										<c:forEach items="${sessionScope.regions }" var="region" varStatus="vs">
 											<li <c:if test="${regionno == region.no }">class="curr"</c:if>>
-												<a href="${webRoot }cemetery/fullCemetery?regionno=${region.no }" >${region.name } </a>
+												<a href="javascript:;" onclick="GoPage('regionno', this)">${region.name } </a>
+												<input type="hidden" name="<c:if test="${regionno == region.no }">regionno</c:if>" value="${region.no }"/>
 											</li>
 										</c:forEach>
-										<div ng-init="regionno='${regionno}'"/>
 									</ul>
 								</div>
 							</div>
@@ -42,14 +45,16 @@
 								<div class="labe">价格区间：</div>
 								<div class="br-category">
 									<ul class="clearfix hov-bg">
-										<li class="curr"><a href="javascript:;">不限</a></li>
-										<li><a href="javascript:;">1万以下</a></li>
-										<li><a href="javascript:;">1-2万</a></li>
-										<li><a href="javascript:;">2-5万</a></li>
-										<li><a href="javascript:;">5-10万</a></li>
-										<li><a href="javascript:;">10-20万</a></li>
-										<li><a href="javascript:;">20万以上 </a></li>
-										<input name="" id="price" type="hidden" value=""/>
+										<li <c:if test="${price == null }">class="curr"</c:if>>
+											<a href="javascript:;" onclick="GoPage('', this)">不限</a>
+											<input type="hidden" name="" value=""/>
+										</li>
+										<c:forEach items="${priceSection }" var="priceSection" varStatus="vs">
+											<li <c:if test="${price == priceSection.index }">class="curr"</c:if>>
+												<a href="javascript:;" onclick="GoPage('price', this)">${priceSection.name }</a>
+												<input type="hidden" name="<c:if test="${price == priceSection.index }">price</c:if>" value="${priceSection.index }"/>
+											</li>
+										</c:forEach>
 									</ul>
 								</div>
 							</div>
@@ -57,14 +62,16 @@
 								<div class="labe">距离市区：</div>
 								<div class="br-category">
 									<ul class="clearfix hov-bg">
-										<li class="curr"><a href="javascript:;">不限</a></li>
-										<li><a href="javascript:;">5公里内</a></li>
-										<li><a href="javascript:;">5-10公里</a></li>
-										<li><a href="javascript:;">10-20公里</a></li>
-										<li><a href="javascript:;">20-30公里</a></li>
-										<li><a href="javascript:;">30-50公里</a></li>
-										<li><a href="javascript:;">50公里以上 </a></li>
-										<input name="" id="distance" type="hidden" value=""/>
+										<li <c:if test="${range == null }">class="curr"</c:if>>
+											<a href="javascript:;" onclick="GoPage('', this)">不限</a>
+											<input type="hidden" name="" value=""/>
+										</li>
+										<c:forEach items="${rangeSection }" var="rangeSection" varStatus="vs">
+											<li <c:if test="${range == rangeSection.index }">class="curr"</c:if>>
+												<a href="javascript:;" onclick="GoPage('range', this)">${rangeSection.name }</a>
+												<input type="hidden" name="<c:if test="${range == rangeSection.index }">range</c:if>" value="${rangeSection.index }"/>
+											</li>
+										</c:forEach>
 									</ul>
 								</div>
 							</div>
@@ -358,8 +365,14 @@
 		            }
 		     };
 			
+			
 		});
 		
+		function GoPage(name, e){
+			$(e).next().attr("name", name);
+			$(e).parent().siblings().find("input").attr("name", "");
+			$("form").submit();
+		}
 			
 </script>
 </html>

@@ -1,6 +1,5 @@
 package com.gmzj.web.controller;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +25,7 @@ import com.gmzj.entity.CemTypeExample;
 import com.gmzj.entity.CemTypeExample.Criteria;
 import com.gmzj.entity.Cemetery;
 import com.gmzj.entity.CemeteryExample;
+import com.gmzj.entity.IntEnum;
 import com.gmzj.entity.Page;
 import com.gmzj.entity.custom.CemTypeCustom;
 import com.gmzj.service.CemArticleService;
@@ -49,7 +50,7 @@ public class CemeteryController extends BaseController{
 	private CemArticleService articleService; 
 
 	@InitBinder("cemetery")   
-    public void initBinder1(WebDataBinder binder) { 
+    public void initCemetery(WebDataBinder binder) { 
 		binder.setFieldDefaultPrefix("cemetery.");
     }
 	
@@ -57,6 +58,12 @@ public class CemeteryController extends BaseController{
     public void initBinder2(WebDataBinder binder) { 
 		binder.setFieldDefaultPrefix("page.");
     }
+	
+	@ModelAttribute
+	public void init(Model model) {
+		model.addAttribute("priceSection", priceSection.values());
+		model.addAttribute("rangeSection", rangeSection.values());
+	}
 	
 	@RequestMapping("/{page}")
 	public String view(HttpServletRequest req, Model model, @PathVariable("page") String page){
@@ -155,8 +162,63 @@ public class CemeteryController extends BaseController{
 	}
 
 	
-	public static void main(String[] args) throws UnsupportedEncodingException {
-		String str = new String("\u6210\u90fd\u5e02".getBytes(), "utf-8");
-		System.out.println(str);
+	public static enum priceSection implements IntEnum<priceSection> {
+		price1("1", "1万以下"), price2("1,2", "1-2万"), price3("2,5", "2-5万"), 
+		price4("5,10", "5-10万"), price5("10,20", "10-20万"), price6("20", "20万以上");
+
+		private final String index;
+		private final String name;
+		private priceSection(String index, String name) {
+			this.index = index;
+			this.name = name;
+		}
+
+		public static String getName(String index) {
+			for (priceSection p : priceSection.values()) {
+				if (p.getIndex().equals(index)) {
+					return p.name;
+				}
+			}
+			return null;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public String getIndex() {
+			// TODO Auto-generated method stub
+			return index;
+		}
+	}
+	
+	public static enum rangeSection implements IntEnum<rangeSection> {
+		range1("5", "5公里以内"), range2("5,10", "5-10公里"), range3("10,20", "10-20公里"), 
+		range4("20,30", "20-30公里"), range5("30,50", "30-50公里"), range6("50", "50公里以上");
+
+		private final String index;
+		private final String name;
+		private rangeSection(String index, String name) {
+			this.index = index;
+			this.name = name;
+		}
+
+		public static String getName(String index) {
+			for (rangeSection r : rangeSection.values()) {
+				if (r.getIndex().equals(index)) {
+					return r.name;
+				}
+			}
+			return null;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public String getIndex() {
+			// TODO Auto-generated method stub
+			return index;
+		}
 	}
 }

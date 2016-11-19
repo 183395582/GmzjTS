@@ -5,6 +5,7 @@
 <script type="text/javascript" src="${webRoot }static/script/select/selectpick.js"></script>
 <script type="text/javascript" src="${webRoot }static/script/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="${webRoot }static/script/bootstrap.min.js"></script>
+<script type="text/javascript" src="${webRoot }static/script/slimscroll/jquery.slimscroll.js"></script>
 
 <!--[if IE 6]>
     <script src="static/admin/js/DD_belatedPNG.js"></script>
