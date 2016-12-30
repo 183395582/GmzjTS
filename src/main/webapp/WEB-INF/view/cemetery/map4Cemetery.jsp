@@ -2,7 +2,7 @@
 <%@include file="../mytags.jsp"%>
 <html lang="zh">
 <head>
-<title>墓地大全</title>
+<title>地图选墓</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="X-UA-Compatible" content="IE=8">
@@ -10,10 +10,10 @@
 <meta name="keywords" content="">
 <jsp:include page="../comm/script.jsp" />
 <jsp:include page="../comm/css.jsp" />
-<script type="text/javascript" src="${webRoot }static/script/tm.pagination.js"></script>
-<script type="text/javascript" src="${webRoot }static/js/cemetery.js"></script>
+
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=yaDRGoon5YoRzAAwH781yUgn"></script>
 <script type="text/javascript" src="http://developer.baidu.com/map/custom/stylelist.js"></script>
+<script type="text/javascript" src="${webRoot }static/script/slimscroll/jquery.slimscroll.js"></script>
 <style type="text/css">
 body, html, #allmap {
 	width: 100%;
@@ -35,7 +35,7 @@ body, html, #allmap {
 </style>
 </head>
 <body>
-	<jsp:include page="comm.jsp" flush="true" />
+	<jsp:include page="layout-top.jsp" flush="true" />
 
 	<div class="main-con">
 		<div class="wrapper">
@@ -49,156 +49,27 @@ body, html, #allmap {
 					</div>
 				</div>
 				<div class="side-slect">
+					<form action="${webRoot }cemetery/map4Cemetery" >
 					<div class="areSlect">
 						<div class="title">所在区域</div>
 						<ul class="clearfix">
-							<li class="curr"><a href="#">不限</a></li>
-							<li><a href="">武侯区</a></li>
-							<li><a href="">锦江区</a></li>
-							<li><a href="">成华区</a></li>
-							<li><a href="">金牛区</a></li>
-							<li><a href="">温江区</a></li>
-							<li><a href="">龙泉驿区</a></li>
-							<li><a href="">青白江区</a></li>
-							<li><a href="">新都区</a></li>
-							<li><a href="">双流县</a></li>
-							<li><a href="">金堂县</a></li>
-							<li><a href="">郫县</a></li>
-							<li><a href="">大邑县</a></li>
-							<li><a href="">浦江县</a></li>
-							<li><a href="">都江堰市</a></li>
-							<li><a href="">邛崃市</a></li>
-							<li><a href="">崇州市</a></li>
+							<ul class="clearfix hov-bg">
+								<li <c:if test="${regionno == null }">class="curr"</c:if>>
+									<a href="javascript:;" onclick="GoPage('', this)">不限 </a>
+									<input type="hidden" name="" value=""/>
+								</li>
+								<c:forEach items="${sessionScope.regions }" var="region" varStatus="vs">
+									<li <c:if test="${regionno == region.no }">class="curr"</c:if>>
+										<a href="javascript:;" onclick="GoPage('regionno', this)">${region.name } </a>
+										<input type="hidden" name="<c:if test="${regionno == region.no }">regionno</c:if>" value="${region.no }"/>
+									</li>
+								</c:forEach>
+							</ul>
 						</ul>
 					</div>
+					</form>
 					<div class="mt20 side-list">
-						<div class="listMore-scroll">
-							<div class="item">
-								<div class="num orange-bg">1</div>
-								<div class="info">
-									<div class="title clearfix">
-										<a href="#" class="name">青城山味江陵园</a>
-										<div class="t-f">
-											<span class="orangeBtn-line btn">认证</span> <span
-												class="redBtn-line btn">团购</span>
-										</div>
-										<a href="" class="camera-icon"><i
-											class="iconfont icon-dingwei"></i></a>
-									</div>
-									<div class="ds-g">成都市都江堰伟江区</div>
-									<div class="price">
-										￥88343 <span>起</span>
-									</div>
-									<div class="ar">
-										<a href="">查看资料 > </a>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="num orange-bg">2</div>
-								<div class="info">
-									<div class="title clearfix">
-										<a href="#" class="name">青城山味江陵园</a>
-										<div class="t-f">
-											<span class="orangeBtn-line btn">认证</span> <span
-												class="redBtn-line btn">团购</span>
-										</div>
-										<a href="" class="camera-icon"><i
-											class="iconfont icon-dingwei"></i></a>
-									</div>
-									<div class="ds-g">成都市都江堰伟江区</div>
-									<div class="price">
-										￥88343 <span>起</span>
-									</div>
-									<div class="ar">
-										<a href="">查看资料 > </a>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="num orange-bg">3</div>
-								<div class="info">
-									<div class="title clearfix">
-										<a href="#" class="name">青城山味江陵园</a>
-										<div class="t-f">
-											<span class="orangeBtn-line btn">认证</span> <span
-												class="redBtn-line btn">团购</span>
-										</div>
-										<a href="" class="camera-icon"><i
-											class="iconfont icon-dingwei"></i></a>
-									</div>
-									<div class="ds-g">成都市都江堰伟江区</div>
-									<div class="price">
-										￥88343 <span>起</span>
-									</div>
-									<div class="ar">
-										<a href="">查看资料 > </a>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="num blue-bg">4</div>
-								<div class="info">
-									<div class="title clearfix">
-										<a href="#" class="name">青城山味江陵园</a>
-										<div class="t-f">
-											<span class="orangeBtn-line btn">认证</span> <span
-												class="redBtn-line btn">团购</span>
-										</div>
-										<a href="" class="camera-icon"><i
-											class="iconfont icon-dingwei"></i></a>
-									</div>
-									<div class="ds-g">成都市都江堰伟江区</div>
-									<div class="price">
-										￥88343 <span>起</span>
-									</div>
-									<div class="ar">
-										<a href="">查看资料 > </a>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="num blue-bg">5</div>
-								<div class="info">
-									<div class="title clearfix">
-										<a href="#" class="name">青城山味江陵园</a>
-										<div class="t-f">
-											<span class="orangeBtn-line btn">认证</span> <span
-												class="redBtn-line btn">团购</span>
-										</div>
-										<a href="" class="camera-icon"><i
-											class="iconfont icon-dingwei"></i></a>
-									</div>
-									<div class="ds-g">成都市都江堰伟江区</div>
-									<div class="price">
-										￥88343 <span>起</span>
-									</div>
-									<div class="ar">
-										<a href="">查看资料 > </a>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="num blue-bg">6</div>
-								<div class="info">
-									<div class="title clearfix">
-										<a href="#" class="name">青城山味江陵园</a>
-										<div class="t-f">
-											<span class="orangeBtn-line btn">认证</span> <span
-												class="redBtn-line btn">团购</span>
-										</div>
-										<a href="" class="camera-icon"><i
-											class="iconfont icon-dingwei"></i></a>
-									</div>
-									<div class="ds-g">成都市都江堰伟江区</div>
-									<div class="price">
-										￥88343 <span>起</span>
-									</div>
-									<div class="ar">
-										<a href="">查看资料 > </a>
-									</div>
-								</div>
-							</div>
+						<div class="listMore-scroll" id="cemetery-list">
 						</div>
 					</div>
 
@@ -222,91 +93,19 @@ body, html, #allmap {
 			</div>
 		</div>
 	</div>
-	<div class="footer">
-		<div class="wrapper clearfix">
-			<div class="col-fl tips-note">
-				<dl>
-					<dt>平台功能</dt>
-					<dd>
-						<a href="#">天使服务</a>
-					</dd>
-					<dd>
-						<a href="#">生前契约 </a>
-					</dd>
-					<dd>
-						<a href="#">在线告别式 </a>
-					</dd>
-					<dd>
-						<a href="#">二维码扫墓</a>
-					</dd>
-					<dd>
-						<a href="#">特色服务</a>
-					</dd>
-				</dl>
-				<dl>
-					<dt>服务指南</dt>
-					<dd>
-						<a href="#">服务预约流程</a>
-					</dd>
-					<dd>
-						<a href="#">在线告别式 </a>
-					</dd>
-					<dd>
-						<a href="#">二维码扫墓</a>
-					</dd>
-					<dd>
-						<a href="#">特色服务</a>
-					</dd>
-				</dl>
-				<dl>
-					<dt>商家合作</dt>
-					<dd>
-						<a href="#">合作流程</a>
-					</dd>
-					<dd>
-						<a href="#">合作政策</a>
-					</dd>
-					<dd>
-						<a href="#">商家评级体系</a>
-					</dd>
-				</dl>
-			</div>
-			<div class="col-fl media-box">
-				<div class="weixin media-icon">
-					<em class="iconfont icon-weixin"></em> 微信公众号
-				</div>
-				<div class="weixin media-icon">
-					<em class="iconfont icon-weibo"></em> 官方微博
-				</div>
-			</div>
-			<div class="col-fl e-wm">
-				<div class="img">
-					<img src="images/pro/an-wx.jpg" />
-				</div>
-				<p>至终守护 &nbsp; &nbsp; 温暖如家</p>
-			</div>
-
-		</div>
-	</div>
-	<div class="footer-bottom">
-		<div class="wrapper">
-			<p class="mb5">copyright2012-2016 公墓之家，ALLRights Reserved
-				ICP备案：蜀ICP备140009697号-2</p>
-			<img src="images/icon/footer.jpg" />
-		</div>
-	</div>
-	<!--下拉菜单-->
-	<link href="${webRoot }static/script/select/selectpick.css"
-		rel="stylesheet" type="text/css" />
-	<script type="text/javascript"
-		src="${webRoot }static/script/select/selectpick.js"></script>
+	<jsp:include page="../comm/footer.jsp"/>
 	<script type="text/javascript">
-		//下拉选择
-		$("#select-opt").selectpick({
-			container : '.select-list',
-			onSelect : function(value, text) {
-				enAble();
+		Handlebars.registerHelper("compare",function(v){
+			if(v < 3){
+				//满足添加继续执行
+				return "orange-bg";
+			}else{
+				//不满足条件执行{{else}}部分
+				return "blue-bg";
 			}
+		});
+		Handlebars.registerHelper("addOne",function(v){
+			return parseInt(v) + 1;
 		});
 		//联动下拉菜单交互
 		$('.listMore-scroll').slimscroll({
@@ -334,27 +133,43 @@ body, html, #allmap {
 			$("#btnhide").hide();
 			$("#btnshow").show();
 		});
+		
+		function GoPage(name, e){
+			$(e).next().attr("name", name);
+			$(e).parent().siblings().find("input").attr("name", "");
+			$("form").submit();
+		}
 	</script>
 	<script type="text/javascript">
-		function GetQueryString(name) {
-			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-			var r = window.location.search.substr(1).match(reg);
-			if (r != null)
-				return unescape(r[2]);
-			return null;
+		var data_info;
+		function getCoordinates(){
+			var regionno = GetQueryString("regionno");
+			data_info = new Array();
+			$.get("${webRoot}cemetery/getCemeterys?type_equalTo=01&regionno_equalTo="+regionno, function(data){
+				var result = eval(data);
+				var num = 0;
+				$(result).each(function(index) {
+					if(this.coordinate != '' && this.coordinate != null){
+						var point_info = new Array(4);
+						point_info[0] = this.coordinate.split(",")[0];
+						point_info[1] = this.coordinate.split(",")[1];
+						point_info[2] = this.name;
+						point_info[3] = this.address;
+						point_info[4] = this.id;
+						data_info[num] = point_info;
+						num ++;
+					}
+				});
+				var template = Handlebars.compile($("#cemetery-template").html());
+				var data = {"cemeterys" : result};
+				$('#cemetery-list').html(template(data));
+			});
 		}
-		var pi = GetQueryString("point");
 		var map = new BMap.Map("l-map");
-		// 百度地图API功能	
+		// 百度地图API功能
 		function initMap() {
 			// 百度地图API功能
-			var point = null
-			if (pi == null || pi == "") {
-				point = new BMap.Point(104.145982, 30.698948);
-			} else {
-				point = new BMap.Point(pi.split(",")[0], pi.split(",")[1]);
-			}
-			map.centerAndZoom(point, 12);
+			map.centerAndZoom(new BMap.Point(104.146583,30.69504), 13);
 			var top_left_control = new BMap.ScaleControl({
 				anchor : BMAP_ANCHOR_TOP_LEFT
 			});// 左上角，添加比例尺
@@ -368,38 +183,91 @@ body, html, #allmap {
 			map.addControl(top_right_navigation);
 			map.enableScrollWheelZoom(); //启用滚轮放大缩小，默认禁用
 			map.enableContinuousZoom(); //启用地图惯性拖拽，默认禁用
-			var marker = new BMap.Marker(point);// 创建标注
-			map.addOverlay(marker); // 将标注添加到地图中
-			marker.enableDragging(); // 不可拖拽
-
-			marker
-					.addEventListener(
-							"dragging",
-							function(e) {
-								window.opener.document.getElementById('span').textContent = e.point.lng
-										+ ", " + e.point.lat;
-								window.opener.document
-										.getElementById('coordinate').value = e.point.lng
-										+ ", " + e.point.lat;
-							})
-			var bdary = new BMap.Boundary();
-			bdary.get('${region}', function(rs) { //获取行政区域
-				var count = rs.boundaries.length;
-				for (var i = 0; i < count; i++) {
-					var ply = new BMap.Polygon(rs.boundaries[i], {
-						strokeWeight : 4,
-						strokeColor : "#007fff",
-						strokeStyle : "dashed"
-					}); //建立多边形覆盖物
-					ply.setFillColor();
-					map.addOverlay(ply); //添加覆盖物
-
-					map.setViewport(ply.getPath()); //调整视野         
+			setTimeout("addPolyline()", 1000);
+		}
+		
+	    //向地图中添加线函数
+	    function addPolyline(){
+	    	for(var i = 0; i < data_info.length; i++){
+				//var myIcon = new BMap.Icon("", new BMap.Size(25,25));
+				var marker = new BMap.Marker(new BMap.Point(data_info[i][0], data_info[i][1]));  // 创建标注
+				var content = "<div><h4 style='margin:0 0 5px 0;padding:0.2em 0'>"+data_info[i][2]+"</h4>"
+				+ "<p style='margin:0;line-height:1.5;font-size:13px;text-indent:2em'>"+data_info[i][3]+"</p></div>";
+				addClickHandler(content, marker);
+				map.addOverlay(marker); // 将标注添加到地图中
+				marker.enableDragging();// 不可拖拽
+			}
+		}
+	    
+	    function cemeterSearch(id){
+			if (id != null && id != ""){
+				for(var i=0; i<data_info.length; i++){
+					if (data_info[i][4] == id) {
+						map.clearOverlays();
+						var new_point = new BMap.Point(data_info[i][0], data_info[i][1]);
+						var marker = new BMap.Marker(new_point);  // 创建标注
+						marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+						map.addOverlay(marker);              // 将标注添加到地图中
+						map.panTo(new_point);
+						
+						var opts = {
+								  width : 200,     // 信息窗口宽度
+								  height: 100,     // 信息窗口高度
+								  title : data_info[i][2]  // 信息窗口标题
+								}
+						var infoWindow = new BMap.InfoWindow("地址：" + data_info[i][3], opts);  // 创建信息窗口对象 
+						marker.addEventListener("click", function(){          
+							map.openInfoWindow(infoWindow, new_point); //开启信息窗口
+						});
+					}
 				}
-			});
-
+			}
+		}
+	    
+		function addClickHandler(content, marker){
+			marker.addEventListener("click",function(e){
+				openInfo(content, e)}
+			);
+		}
+		function openInfo(content, e){
+			var p = e.target;
+			var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+			var infoWindow = new BMap.InfoWindow(content);  // 创建信息窗口对象 
+			infoWindow.setWidth(200);
+		    infoWindow.setHeight(150);
+			map.openInfoWindow(infoWindow, point); //开启信息窗口
 		}
 		initMap();
+		getCoordinates();
+		
+	</script>
+	<script type="text/javascript" src="${webRoot }static/script/tm.pagination.js"></script>
+	<script type="text/javascript" src="${webRoot }static/js/cemetery.js"></script>
+	<script id="cemetery-template" type="text/x-handlebars-template">
+	{{#each cemeterys}}
+         <div class="item">
+			<div class="num {{#compare @index}}{{/compare}}">{{#addOne @index}}{{/addOne}}</div>
+			<div class="info">
+				<div class="title clearfix">
+					<a href="#" class="name">{{name }}</a>
+					<div class="t-f">
+						<span class="orangeBtn-line btn">认证</span> 
+						<span class="redBtn-line btn">团购</span>
+					</div>
+					<a class="camera-icon" href="javascript:cemeterSearch({{id}})">
+						<i class="iconfont icon-dingwei"></i>
+					</a>
+				</div>
+				<div class="ds-g">${cemtery.address }</div>
+				<div class="price">
+					￥{{price }} <span>起</span>
+				</div>
+				<div class="ar">
+					<a href="">查看资料 > </a>
+				</div>
+			</div>
+		</div> 
+    {{/each}}
 	</script>
 </body>
 

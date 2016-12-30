@@ -234,15 +234,15 @@
 								<p class="img"><img src="${webRoot }${by.imgUrl }" /></p>
 								<div class="star-hov">
 									<dl>
-										<dd class="score">${fn:split(by.score, ",")[0] }</dd>
+										<dd class="score">${by.scoreCh }</dd>
 										<dt>策划</dt>
 									</dl>
 									<dl>
-										<dd class="score">${fn:split(by.score, ",")[1] }</dd>
+										<dd class="score">${by.scoreFw }</dd>
 										<dt>服务</dt>
 									</dl>
 									<dl>
-										<dd class="score">${fn:split(by.score, ",")[2] }</dd>
+										<dd class="score">${by.scoreJg }</dd>
 										<dt>价格</dt>
 									</dl>
 								</div>
@@ -269,15 +269,15 @@
 								<p class="img"><img src="${webRoot }${fs.imgUrl }" /></p>
 								<div class="star-hov">
 									<dl>
-										<dd class="score">${fn:split(fs.score, ",")[0] }</dd>
+										<dd class="score">${fs.scoreCh }</dd>
 										<dt>策划</dt>
 									</dl>
 									<dl>
-										<dd class="score">${fn:split(fs.score, ",")[1] }</dd>
+										<dd class="score">${fs.scoreFw }</dd>
 										<dt>服务</dt>
 									</dl>
 									<dl>
-										<dd class="score">${fn:split(fs.score, ",")[2] }</dd>
+										<dd class="score">${fs.scoreJg }</dd>
 										<dt>价格</dt>
 									</dl>
 								</div>
@@ -363,56 +363,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="footer">
-			<div class="wrapper clearfix">
-				<div class="col-fl tips-note">
-					<dl>
-						<dt>平台功能</dt>
-						<dd><a href="#">天使服务</a></dd>
-						<dd><a href="#">生前契约 </a></dd>
-						<dd><a href="#">在线告别式 </a></dd>
-						<dd><a href="#">二维码扫墓</a></dd>
-						<dd><a href="#">特色服务</a></dd>
-					</dl>
-					<dl>
-						<dt>服务指南</dt>
-						<dd><a href="#">服务预约流程</a></dd>
-						<dd><a href="#">在线告别式 </a></dd>
-						<dd><a href="#">二维码扫墓</a></dd>
-						<dd><a href="#">特色服务</a></dd>
-					</dl>
-					<dl>
-						<dt>商家合作</dt>
-						<dd><a href="#">合作流程</a></dd>
-						<dd><a href="#">合作政策</a></dd>
-						<dd><a href="#">商家评级体系</a></dd>
-					</dl>
-				</div>
-				<div class="col-fl media-box">
-					<div class="weixin media-icon">
-						<em class="iconfont icon-weixin"></em>
-						微信公众号
-					</div>
-					<div class="weixin media-icon">
-						<em class="iconfont icon-weibo"></em>
-						官方微博
-					</div>
-				</div>
-				<div class="col-fl e-wm">
-					<div class="img">
-						<img src="${webRoot }static/images/pro/an-wx.jpg"/>
-					</div>
-					<p>至终守护 &nbsp; &nbsp; 温暖如家</p>
-				</div>
-				
-			</div>
-		</div>
-		<div class="footer-bottom">
-			<div class="wrapper">
-				<p class="mb5">copyright2012-2016  公墓之家，ALLRights  Reserved  ICP备案：蜀ICP备140009697号-2</p>
-				<img src="${webRoot }static/images/icon/footer.jpg" />
-			</div>
-		</div>
+		<jsp:include page="comm/footer.jsp"/>
 		<script>
 		$("#select-opt").selectpick({container:'.select-list', onSelect:function(value,text){
 			enAble();}

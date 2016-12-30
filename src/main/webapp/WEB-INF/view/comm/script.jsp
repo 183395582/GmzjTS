@@ -1,11 +1,12 @@
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js" type="text/javascript"></script>
-<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<script type="text/javascript" src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
 <script type="text/javascript" src="${webRoot }static/script/UI.js"></script>
 <script type="text/javascript" src="${webRoot }static/script/commen.js"></script>
 <script type="text/javascript" src="${webRoot }static/script/select/selectpick.js"></script>
 <script type="text/javascript" src="${webRoot }static/script/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="${webRoot }static/script/bootstrap.min.js"></script>
 <script type="text/javascript" src="${webRoot }static/script/slimscroll/jquery.slimscroll.js"></script>
+<script type="text/javascript" src="${webRoot }static/plugins/handlebars.js"></script>
 
 <!--[if IE 6]>
     <script src="static/admin/js/DD_belatedPNG.js"></script>
@@ -36,5 +37,9 @@ function handleScore(e){
 	}
 	$(e).before(html);
 }
-
+function GetQueryString(name) {
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+}
 </script>

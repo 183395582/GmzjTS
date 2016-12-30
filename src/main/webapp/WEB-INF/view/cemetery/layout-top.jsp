@@ -94,10 +94,10 @@
 				<li id="index"><a href="${webRoot }cemetery/index">首页</a></li>
 				<li id="fullCemetery"><a href="${webRoot }cemetery/fullCemetery">墓地大全</a></li>
 				<li id="map4Cemetery"><a href="${webRoot }cemetery/map4Cemetery">地图选墓</a></li>
-				<li><a href="#">墓地风水</a></li>
-				<li><a href="#">购墓指南</a></li>
-				<li><a href="#">墓地咨询</a></li>
-				<li><a href="#">预约看墓/购墓</a></li>
+				<li id="geomancy"><a href="${webRoot }cemetery/geomancy">墓地风水</a></li>
+				<li id="buyingGuide"><a href="${webRoot }cemetery/buyingGuide">购墓指南</a></li>
+				<li id="cemRefer"><a href="${webRoot }cemetery/cemRefer">墓地咨询</a></li>
+				<li id="appointment"><a href="${webRoot }cemetery/appointment">预约看墓/购墓</a></li>
 				<li><a href="#">平台优惠</a></li>
 			</ul>
 		</div>

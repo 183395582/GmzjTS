@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,11 +48,16 @@ public class CemeteryController extends BaseController{
 	@Autowired 
 	private CemTypeService cemTypeService;
 	@Autowired
-	private CemArticleService articleService; 
+	private CemArticleService cemArticleService; 
 
 	@InitBinder("cemetery")   
     public void initCemetery(WebDataBinder binder) { 
 		binder.setFieldDefaultPrefix("cemetery.");
+    }
+	
+	@InitBinder("cemArticle")   
+    public void initCemArticle(WebDataBinder binder) { 
+		binder.setFieldDefaultPrefix("cemArticle.");
     }
 	
 	@InitBinder("page")   
@@ -119,6 +125,44 @@ public class CemeteryController extends BaseController{
 	}
 	
 	/**
+	 * 墓地风水、购墓指南、墓地咨询分页查询
+	 * @return
+	 * @throws Exception 
+	 */
+	@ResponseBody
+	@RequestMapping(value = "getCemArticleByPage", method = RequestMethod.GET)
+	public Object getCemArticleByPage(HttpServletRequest req, Page<CemArticle> page, CemArticle cemArticle) throws Exception{
+		page.setParm(cemArticle);
+		List<CemArticle> result = this.cemArticleService.listPage(page);
+		page.setResult(result);
+		return page;
+	}
+	
+	/**
+	 * 地图选墓
+	 * @param req
+	 * @param model
+	 * @param page
+	 * @return
+	 * @throws Exception 
+	 */
+	@RequestMapping("/map4Cemetery")
+	public String map4Cemetery(HttpServletRequest req, Model model) throws Exception{
+		String regionno = req.getParameter("regionno");
+		CemeteryExample example = new CemeteryExample();
+		com.gmzj.entity.CemeteryExample.Criteria criteria = example.createCriteria();
+		if (StringUtils.isNotEmpty(regionno)) {
+			criteria.andRegionnoEqualTo(regionno);
+			model.addAttribute("regionno", regionno);
+		}
+		criteria.andTypeEqualTo(Cemetery.ComType.gmly.getIndex());
+		List<Cemetery> list = cemeteryService.findCemeterys(example);
+		model.addAttribute("cemeterys", list);
+		model.addAttribute("page", "map4Cemetery");
+		return "cemetery/map4Cemetery";
+	}
+	
+	/**
 	 * 公墓查询
 	 * @return
 	 * @throws Exception 
@@ -139,7 +183,7 @@ public class CemeteryController extends BaseController{
 	@RequestMapping("getCemArticles")
 	public Object getCemArticles(HttpServletRequest req) throws Exception{
 		CemArticleExample example = this.getExample(req, CemArticle.class);
-		return this.articleService.findCemArticles(example);
+		return this.cemArticleService.findCemArticles(example);
 	}
 	
 	@ResponseBody

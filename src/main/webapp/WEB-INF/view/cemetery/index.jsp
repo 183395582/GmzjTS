@@ -13,7 +13,7 @@
 
 	</head>
 	<body ng-app="myApp">
-		<jsp:include page="comm.jsp" flush="true" />
+		<jsp:include page="layout-top.jsp" flush="true" />
 		<div class="banner-box">
 			<div class="wrapper pt10">
 				<a href=""><img
@@ -516,63 +516,7 @@
 						</div>
 					</div>
 					<!--右侧内容-->
-					<div class="sideBar">
-						<h2 class="clearfix">
-							<span class="l-t">墓地资讯</span> <a href="#" class="more-link-s fr">更多 ></a>
-						</h2>
-						<div class="info">
-							<div class="title-img" ng-repeat="x in cemZX.slice(0, 1)">
-								<img src="${webRoot }static/images/pro/ly-img11.jpg" />
-								<div class="t">{{x.title}}</div>
-							</div>
-							<ul class="list" ng-repeat="x in cemZX.slice(1, 10)">
-								<li><a href="#">{{x.title}}</a></li>
-							</ul>
-						</div>
-						<h2 class="clearfix">
-							<span class="l-t">优质墓地排行榜</span> <a href="#" class="more-link-s fr">更多 ></a>
-						</h2>
-						<div class="info">
-							<div class="title-img" ng-repeat="x in greatGM.slice(0, 1)">
-								<div class="round-row">
-									<div class="col col-40">
-										<span class="red-bg rank-c">1</span> <img
-											src="${webRoot }static/images/pro/ly-img13.jpg" />
-									</div>
-									<div class="col col-60">
-										<div class="pl10">{{x.name}}</div>
-										<div class="pl10 orange-f mt5">￥{{x.price}}起</div>
-										<div class="pl10 font-12 ellipsis-f">{{x.introduce.slice(0,15)}}...</div>
-									</div>
-								</div>
-							</div>
-							<ul class="list list-no">
-								<li ng-repeat="x in greatGM.slice(1, 3)">
-									<span class="orange-bg rank-c">{{$index+2}}</span><a href="#">{{x.name}}</a>
-								</li>
-								<li ng-repeat="x in greatGM.slice(3, 12)">
-									<span class="blue-bg rank-c">{{$index+4}}</span><a href="#">{{x.name}}</a>
-								</li>
-							</ul>
-						</div>
-						<h2 class="clearfix">
-							<span class="l-t">墓地风水</span> <a href="#" class="more-link-s fr">更多 ></a>
-						</h2>
-						<div class="info">
-							<div class="title-img" ng-repeat="x in cemFS.slice(0, 1)">
-								<img src="${webRoot }static/images/pro/ly-img10.jpg" />
-								<div class="t">{{x.title}}</div>
-							</div>
-							<ul class="list" ng-repeat="x in cemFS.slice(1, 10)">
-								<li><a href="#">{{x.title}}</a></li>
-							</ul>
-						</div>
-						<div class="info-ad">
-							<a href=""><img
-								src="${webRoot }static/images/pro/ly-img7.jpg" /></a> <a href=""><img
-								src="${webRoot }static/images/pro/ly-img8.jpg" /></a>
-						</div>
-					</div>
+					<jsp:include page="layout-right.jsp" flush="true" />
 				</div>
 	
 				<!--购墓指南-->
@@ -763,7 +707,7 @@
 				handleScore(this);
 			});
 		}
-		setTimeout("processScore()", 1000 );
+		setTimeout("processScore()", 1500 );
 		
 	</script>
 

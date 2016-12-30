@@ -11,11 +11,10 @@
 <jsp:include page="../comm/script.jsp" />
 <jsp:include page="../comm/css.jsp" />
 <script type="text/javascript" src="${webRoot }static/script/tm.pagination.js"></script>
-<script type="text/javascript" src="${webRoot }static/js/cemetery.js"></script>
 
 </head>
 <body ng-app="myApp" ng-controller="myCtrl">
-	<jsp:include page="comm.jsp" flush="true" />
+	<jsp:include page="layout-top.jsp" flush="true" />
 
 
 	<div class="main-con">
@@ -140,95 +139,7 @@
 
 				</div>
 				<!--右侧内容-->
-				<div class="sideBar">
-					<div class="order-box mb20">
-						<h2>
-							<img src="${webRoot }static/images/icon/free-tilte.png" />
-						</h2>
-						<div class="info-list">
-							<ul>
-								<li>
-									<div class="icon-b">
-										<i class="iconfont icon-iconfontliuyanban"></i>
-									</div>
-									<div class="tx">
-										<div class="title">专业咨询</div>
-										<p>为家属提供多重解决方案</p>
-									</div>
-								</li>
-								<li>
-									<div class="icon-b">
-										<i class="iconfont icon-iconfontliuyanban"></i>
-									</div>
-									<div class="tx">
-										<div class="title">免费专车接送</div>
-										<p>为家属提供多重解决方案</p>
-									</div>
-								</li>
-								<li>
-									<div class="icon-b">
-										<i class="iconfont icon-iconfontliuyanban"></i>
-									</div>
-									<div class="tx">
-										<div class="title">贴心服务</div>
-										<p>全程陪同家属参观选购</p>
-									</div>
-								</li>
-							</ul>
-							<div class="mt15 mrl20">
-								<a href="" class="blueBtn dis-block">马上预约</a>
-							</div>
-						</div>
-					</div>
-					<h2 class="clearfix">
-						<span class="l-t">优质墓地排行榜</span> <a href="#"
-							class="more-link-s fr">更多 ></a>
-					</h2>
-					<div class="info">
-						<div class="title-img" ng-repeat="x in greatGM.slice(0, 1)">
-							<div class="round-row">
-								<div class="col col-40">
-									<span class="red-bg rank-c">1</span> <img
-										src="${webRoot }static/images/pro/ly-img13.jpg" />
-								</div>
-								<div class="col col-60">
-									<div class="pl10">{{x.name}}</div>
-									<div class="pl10 orange-f mt5">￥{{x.price}}起</div>
-									<div class="pl10 font-12 ellipsis-f">{{x.introduce.slice(0,15)}}...</div>
-								</div>
-							</div>
-						</div>
-						<ul class="list list-no" ng-repeat="x in greatGM.slice(1, 10)">
-							<li><span class="orange-bg rank-c">2</span><a href="#">{{x.name}}</a></li>
-						</ul>
-					</div>
-					<h2 class="clearfix">
-						<span class="l-t">墓地风水</span> <a href="#" class="more-link-s fr">更多
-							></a>
-					</h2>
-					<div class="info">
-						<div class="title-img" ng-repeat="x in cemFS.slice(0, 1)">
-							<img src="${webRoot }static/images/pro/ly-img10.jpg" />
-							<div class="t">{{x.title}}</div>
-						</div>
-						<ul class="list" ng-repeat="x in cemFS.slice(1, 10)">
-							<li><a href="#">{{x.title.slice(0,15)}}</a></li>
-						</ul>
-					</div>
-					<div class="info-ad">
-						<a href=""><img src="${webRoot }static/images/pro/ly-img7.jpg" /></a>
-						<a href=""><img src="${webRoot }static/images/pro/ly-img8.jpg" /></a>
-					</div>
-					<h2 class="clearfix mt20">
-						<span class="l-t">墓地指南</span> <a href="#" class="more-link-s fr">更多
-							></a>
-					</h2>
-					<div class="info">
-						<ul class="list" ng-repeat="x in cemZN.slice(0, 10)">
-							<li><a href="#">{{x.title}}</a></li>
-						</ul>
-					</div>
-				</div>
+				<jsp:include page="layout-right.jsp" flush="true" />
 			</div>
 
 
@@ -243,79 +154,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="footer">
-		<div class="wrapper clearfix">
-			<div class="col-fl tips-note">
-				<dl>
-					<dt>平台功能</dt>
-					<dd>
-						<a href="#">天使服务</a>
-					</dd>
-					<dd>
-						<a href="#">生前契约 </a>
-					</dd>
-					<dd>
-						<a href="#">在线告别式 </a>
-					</dd>
-					<dd>
-						<a href="#">二维码扫墓</a>
-					</dd>
-					<dd>
-						<a href="#">特色服务</a>
-					</dd>
-				</dl>
-				<dl>
-					<dt>服务指南</dt>
-					<dd>
-						<a href="#">服务预约流程</a>
-					</dd>
-					<dd>
-						<a href="#">在线告别式 </a>
-					</dd>
-					<dd>
-						<a href="#">二维码扫墓</a>
-					</dd>
-					<dd>
-						<a href="#">特色服务</a>
-					</dd>
-				</dl>
-				<dl>
-					<dt>商家合作</dt>
-					<dd>
-						<a href="#">合作流程</a>
-					</dd>
-					<dd>
-						<a href="#">合作政策</a>
-					</dd>
-					<dd>
-						<a href="#">商家评级体系</a>
-					</dd>
-				</dl>
-			</div>
-			<div class="col-fl media-box">
-				<div class="weixin media-icon">
-					<em class="iconfont icon-weixin"></em> 微信公众号
-				</div>
-				<div class="weixin media-icon">
-					<em class="iconfont icon-weibo"></em> 官方微博
-				</div>
-			</div>
-			<div class="col-fl e-wm">
-				<div class="img">
-					<img src="${webRoot }static/images/pro/an-wx.jpg" />
-				</div>
-				<p>至终守护 &nbsp; &nbsp; 温暖如家</p>
-			</div>
-
-		</div>
-	</div>
-	<div class="footer-bottom">
-		<div class="wrapper">
-			<p class="mb5">copyright2012-2016 公墓之家，ALLRights Reserved
-				ICP备案：蜀ICP备140009697号-2</p>
-			<img src="${webRoot }static/images/icon/footer.jpg" />
-		</div>
-	</div>
+	<jsp:include page="../comm/footer.jsp"/>
 </body>
 <script type="text/javascript">
 		var app = angular.module('myApp', ['tm.pagination', 'com.gmzj.cemetery']);

@@ -69,6 +69,10 @@ public class BaseController {
 				String[] strs = name.split("_");
 				if (strs == null || strs.length != 2) continue;
 				String value = new String(req.getParameter(name).getBytes("ISO-8859-1"),"utf-8");
+				if (StringUtils.isBlank(value) || "null".equals(value)) continue;
+				if (strs[1].equals("in")) {
+					
+				}
 				//方法名
 				String methodName = "and" + StringUtils.capitalize(strs[0]) + StringUtils.capitalize(strs[1]);
 				//获取参数类型
