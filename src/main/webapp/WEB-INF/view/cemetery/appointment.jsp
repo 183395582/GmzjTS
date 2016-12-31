@@ -88,7 +88,7 @@
                         							<div class="labe">已选:</div>
                         							<div class="info">
                         								<div class="closeCon" style="margin: 0;">
-															<a href="javascript:;" ng-repeat="item in items">{{item.val}}<i class="iconfont icon-iconfontcha"></i></a>
+															<a href="javascript:;" ng-repeat="item in items">{{item.val}}<i class="iconfont icon-iconfontcha" ng-click="del($event)" no="{{item.no}}"></i></a>
 														</div>
 														<div class="colseAll" id="colseAll">
 															<a href="javascript:;">清空</a>
@@ -101,7 +101,7 @@
 										</div>
 										<div class="closeCon">
 											<span>不限</span>
-											<a href="javascript:;" ng-repeat="item in items">{{item.val}}<i class="iconfont icon-iconfontcha"></i></a>
+											<a href="javascript:;" ng-repeat="item in items">{{item.val}}<i class="iconfont icon-iconfontcha" ng-click="del($event)" no="{{item.no}}"></i></a>
 										</div>
 									</div>
 								</div>
@@ -336,6 +336,7 @@
 					$scope.cemeterys = response;
 				});
 		    }
+			//弹出选择窗口
 			$scope.openModal = function($event) {
 				$http.get("${webRoot }cemetery/getCemeterys", {params:{type_equalTo:"01", regionno_equalTo:$($event.target).attr("val")}})
 				 .success(function (response) {
@@ -347,13 +348,22 @@
 			$scope.selected = function($event) {
             	if($($event.target).hasClass('selected')){
                      $($event.target).removeClass("selected");
+                     $scope.del($event);
                 }else{
                      $($event.target).addClass("selected");
                      $scope.items.push({ 
                     	 no: $($event.target).attr("no"),  
                     	 val: $($event.target).attr("val")
-                    	 });
+                     });
                 }
+			}
+			//删除已选墓地
+			$scope.del = function(event) {
+				angular.forEach($scope.items, function(data, index, array){
+                	if (data.no == $(event.target).attr("no")) {
+                		$scope.items.splice(index, 1);
+                	}
+                 });
 			}
 		});
 </script>
