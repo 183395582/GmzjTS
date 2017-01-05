@@ -81,7 +81,9 @@
                         						</div>
                         						<div class="select-condition">
                         							<ul class="clearfix">
-                        								<li ng-repeat="x in cemeterys"><span class="" ng-click="selected($event)" no="{{x.id}}" val="{{x.name}}"></span> {{x.name}}</li>
+                        								<li ng-repeat="x in cemeterys">
+                        									<span class="{{x.id | isSelected:items}}" ng-click="selected($event)" no="{{x.id}}" val="{{x.name}}"></span> {{x.name}}
+                        								</li>
                         							</ul>
                         						</div>
                         						<div class="item-labe">
@@ -300,9 +302,23 @@
 			}
 		}]);
 		
+		//选中效果过滤器
+		app.filter("isSelected",function(){
+			return function(id, items){
+				var result = "";
+				angular.forEach(items, function(data, index, array){
+                	if (data.no == id) {
+                		result = "selected";
+                	}
+                 });
+				return result;
+			}
+		});
+		
 		app.controller('myCtrl', function($scope, $http, $timeout, cemeteryService) {
 			//已预约墓地集合
 			$scope.items=[];
+			$scope.cemeterys=[];
 			//优质墓地排行榜
 			$http.get("${webRoot }cemetery/getCemeterys", {params:{order:"score desc"}})
 			 .success(function (response) {
@@ -333,9 +349,10 @@
 			$scope.queryCemetery = function($event) {
 				$http.get("${webRoot }cemetery/getCemeterys", {params:{type_equalTo:"01", regionno_equalTo:$($event.target).attr("val")}})
 				 .success(function (response) {
-					$scope.cemeterys = response;
+					 $scope.cemeterys = response;
 				});
 		    }
+			
 			//弹出选择窗口
 			$scope.openModal = function($event) {
 				$http.get("${webRoot }cemetery/getCemeterys", {params:{type_equalTo:"01", regionno_equalTo:$($event.target).attr("val")}})
@@ -344,6 +361,7 @@
 				});
 				$(".selectStore_modal").toggle();
 			}
+			
 			//选择公墓
 			$scope.selected = function($event) {
             	if($($event.target).hasClass('selected')){
