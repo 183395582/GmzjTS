@@ -65,7 +65,7 @@
 											<a href="javascript:;" class="up-imgBtn orangBtn" id="" ng-click="openModal($event)" val="">选择</a>
                         					<span>（最多选择3个）</span>
                         					<div class="selectStore_modal">
-                        						<span class="iconfont icon-guanbi closeBtn" id="close-modal"></span>
+                        						<span class="iconfont icon-guanbi closeBtn close-modal"></span>
                         						<div class="item-labe">
                         							<div class="labe">区域：</div>
                         							<div class="info">
@@ -98,7 +98,7 @@
 														<p class="mt10 font-12">(最多选择3个墓地)</p>
                         							</div>
                         						</div>
-                        						<div class="sureBtn ac mt15"><button class="redBtn">确定</button></div>
+                        						<div class="sureBtn ac mt15"><button class="redBtn close-modal">确定</button></div>
                         					</div>
 										</div>
 										<div class="closeCon">
@@ -422,7 +422,7 @@
 			$("#seclectbtn").click(function(){
 				$(".selectStore_modal").toggle();
 			});
-			$("#close-modal").click(function(){
+			$(".close-modal").click(function(){
 				$(".selectStore_modal").hide();
 			});
 			$(".closeCon a") .click(function(){

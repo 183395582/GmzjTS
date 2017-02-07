@@ -127,7 +127,7 @@
 											<a href="#">园区介绍 </a> <a href="#">园区环境</a> <a href="#">墓型展示</a>
 										</div>
 										<div class="read fr">
-											<a href="" class="blueBtn">查看陵园</a>
+											<a  href="${webRoot }cemetery/getCemetery/zone_index/{{x.id}}" class="blueBtn">查看陵园</a>
 										</div>
 									</div>
 								</div>

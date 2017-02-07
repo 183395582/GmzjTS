@@ -167,6 +167,17 @@ public class CemeteryController extends BaseController{
 	 * @return
 	 * @throws Exception 
 	 */
+	@RequestMapping("getCemetery/{pageName}/{id}")
+	public String getCemetery(Model model, @PathVariable("pageName")String pageName, @PathVariable("id")int id) throws Exception{
+		model.addAttribute("cemetery", this.cemeteryService.findCemeteryByKey(id));
+		return "cemetery/" + pageName;
+	}
+	
+	/**
+	 * 公墓查询
+	 * @return
+	 * @throws Exception 
+	 */
 	@ResponseBody
 	@RequestMapping("getCemeterys")
 	public Object getCemeterys(HttpServletRequest req) throws Exception{
